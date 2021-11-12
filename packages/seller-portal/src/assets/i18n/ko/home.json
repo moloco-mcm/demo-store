@@ -1,0 +1,17 @@
+{
+  "dashboard": "Dashboard",
+  "monthlyNewOrders": "월별 신규 주문",
+  "productVisits": "총 상품페이지 방문 수",
+  "productSold": "총 상품 판매량",
+  "grossEarnings": "총 매출",
+  "productSoldChart": "판매량 추이",
+  "earnings": "매출 추이",
+  "ratings": "별점",
+  "shipping": "배송",
+  "pickedUp": "배송 준비",
+  "dispatched": "배송 중",
+  "delivered": "배송 완료",
+  "returned": "반품/환불",
+  "topSellingProduct": "Top Selling 상품",
+  "soldItems": "{{count}}개 판매"
+}

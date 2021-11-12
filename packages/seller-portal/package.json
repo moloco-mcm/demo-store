@@ -1,0 +1,58 @@
+{
+  "name": "@rmp-demo-store/seller-portal",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "yarn build:deps && yarn link:deps && next dev",
+    "build": "yarn build:deps && yarn link:deps && next build",
+    "build:deps": "yarn workspace @rmp-demo-store/ui build",
+    "link:deps": "cd ../ui/dist && yarn link && cd ../../seller-portal && yarn link @rmp-demo-store/ui",
+    "unlink:deps": "yarn unlink @rmp-demo-store/ui && cd ../ui/dist && yarn unlink",
+    "netlify-build": "yarn netlify build",
+    "start": "next start",
+    "lint": "next lint",
+    "hooks:pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint",
+      "git add"
+    ],
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@hookform/resolvers": "^2.5.2",
+    "@rmp-demo-store/ui": "^0.1.0",
+    "@sentry/nextjs": "^6.13.3",
+    "chart.js": "3.5.0",
+    "firebase": "9.0.1",
+    "firebase-admin": "^9.11.1",
+    "i18next": "^20.3.2",
+    "i18next-browser-languagedetector": "^6.1.2",
+    "js-cookie": "^3.0.1",
+    "nanoid": "^3.1.25",
+    "next": "11.1.2",
+    "next-i18next": "^8.9.0",
+    "query-string": "^7.0.1",
+    "react": "17.0.2",
+    "react-chartjs-2": "3.0.4",
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.7.1",
+    "styled-components": "^5.3.0",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "@netlify/plugin-nextjs": "^4.0.0-beta.1",
+    "@types/js-cookie": "^3.0.0",
+    "@types/react": "17.0.19",
+    "@types/styled-components": "^5.1.9",
+    "eslint-config-next": "11.1.2"
+  }
+}

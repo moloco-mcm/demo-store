@@ -1,0 +1,19 @@
+{
+  "header": "셀러포탈 로그인",
+  "email": {
+    "label": "이메일",
+    "errors": {
+      "required": "이메일을 입력하세요.",
+      "email": "유효한 이메일을 입력하세요."
+    }
+  },
+  "password": {
+    "label": "비밀번호",
+    "errors": {
+      "required": "비밀번호를 입력하세요."
+    }
+  },
+  "submitButton": {
+    "label": "로그인"
+  }
+}

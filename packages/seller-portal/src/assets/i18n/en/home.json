@@ -1,0 +1,18 @@
+{
+  "dashboard": "Dashboard",
+  "monthlyNewOrders": "Monthly New Orders",
+  "productVisits": "Product Visits",
+  "productSold": "Product Sold",
+  "grossEarnings": "Gross Earnings",
+  "productSoldChart": "Product Sold",
+  "earnings": "Earnings",
+  "ratings": "Ratings",
+  "shipping": "Shipping",
+  "pickedUp": "Picked Up",
+  "dispatched": "Dispatched",
+  "delivered": "Delivered",
+  "returned": "Returned",
+  "topSellingProduct": "Top Selling Products",
+  "soldItems": "Sold {{count}} item",
+  "soldItems_plural": "Sold {{count}} items"
+}

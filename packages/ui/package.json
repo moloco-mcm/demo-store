@@ -1,0 +1,100 @@
+{
+  "name": "@rmp-demo-store/ui",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=14"
+  },
+  "scripts": {
+    "build": "yarn clean && yarn build:module && yarn build:types && yarn build:package-json",
+    "build:module": "babel ./src --out-dir ./dist --extensions .ts,.tsx,.js,.jsx --source-maps --ignore **/__tests__/*,**/*.test.ts,**/*.test.js,**/*.test.tsx,**.test.jsx",
+    "build:types": "tsc --emitDeclarationOnly --declaration --declarationDir dist",
+    "build:package-json": "node ./scripts/build-package-json.js",
+    "clean": "rm -rf ./dist",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "CI=true jest --passWithNoTests",
+    "lint": "eslint --ext .ts,.tsx,.jsx,.js ./src ./stories",
+    "format": "prettier --write .",
+    "check-ts": "tsc --noEmit",
+    "hooks:pre-commit": "yarn check-ts && lint-staged && yarn test:ci",
+    "storybook": "start-storybook -p 6007",
+    "build:storybook": "build-storybook -o build-storybook",
+    "deploy:storybook": "yarn build:storybook && firebase deploy --only hosting:rmp-portal-ui --project default"
+  },
+  "eslintConfig": {
+    "plugins": [
+      "prettier"
+    ],
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "warn"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint",
+      "git add"
+    ],
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "csstype": "^3.0.8",
+    "lodash": "^4.17.21",
+    "tinycolor2": "^1.4.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.7",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@storybook/addon-actions": "^6.3.4",
+    "@storybook/addon-essentials": "^6.3.4",
+    "@storybook/addon-links": "^6.3.4",
+    "@storybook/react": "^6.3.4",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/direction": "^2.0.0",
+    "@types/jest": "^26.0.15",
+    "@types/lodash": "^4.14.170",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/styled-components": "^5.1.9",
+    "@types/tinycolor2": "^1.4.2",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-macros": "^3.1.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-jest": "^24.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-testing-library": "^3.9.2",
+    "jest": "26.6.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
+    "storybook-dark-mode": "^1.0.8",
+    "styled-components": "^5.3.0",
+    "ts-jest": "^26.5.6"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.0"
+  }
+}
