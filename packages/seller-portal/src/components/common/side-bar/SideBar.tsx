@@ -168,7 +168,7 @@ export const SideBar: React.FC<Props> = (props) => {
               font-size: ${fontSize('xs')};
             `}
           >
-            {t('darkMode')}:{' '}
+            {`${t('darkMode')}: `}
           </span>
           <Switch
             size="sm"
