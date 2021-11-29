@@ -1,17 +1,13 @@
 import { initializeApp, getApp, getApps } from 'firebase/app';
 import { initializeAuth, getAuth, inMemoryPersistence } from 'firebase/auth';
 
-import firebaseConfigs from './config';
-
-const config = (() => {
-  if (process.env.NEXT_PUBLIC_STAGE === 'prod') return firebaseConfigs.prod;
-  // fallback to dev config, so firebase app always to be initialized
-  return firebaseConfigs.test;
-})();
-
 export const getFirebaseApp = () => {
   if (getApps().length === 0) {
-    const app = initializeApp(config);
+    const app = initializeApp({
+      apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+      projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+      appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+    });
 
     initializeAuth(app, {
       persistence: inMemoryPersistence,
