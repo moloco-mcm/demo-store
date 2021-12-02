@@ -25,7 +25,9 @@ jobs:
 
       - name: Install dependencies
         if: steps.cache-packages.outputs.cache-hit != 'true'
-        run: yarn
+        run: |
+          yarn set version 1.21.1
+          yarn
 
       - name: Lint
         run: yarn workspaces run lint
