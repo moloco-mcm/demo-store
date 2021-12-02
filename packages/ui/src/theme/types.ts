@@ -216,10 +216,9 @@ export type ThemeFoundationType = {
   radius: Record<RadiusKey, string>;
   colors: {
     [key in ColorNameWithNoHue]: string;
-  } &
-    {
-      [key in ColorNameWithHue]: Record<ColorHue, string>;
-    };
+  } & {
+    [key in ColorNameWithHue]: Record<ColorHue, string>;
+  };
   transitions: {
     property: Record<TransitionPropertyKey, string>;
     timingFn: Record<TransitionTimingFnKey, string>;
