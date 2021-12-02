@@ -4,6 +4,7 @@ import { withSentry } from '@sentry/nextjs';
 
 import { sessionResolver, yup } from '../../../common/utils';
 import { createSignedRmpPortalUrl } from '../../../common/utils/rmp';
+import { getFirebaseAdminApp } from '../../../common/firebase-admin';
 
 const REQUEST_BODY_SCHEMA = yup.object().shape({
   colorMode: yup.mixed().oneOf(['light', 'dark', 'useDeviceSetting']),
@@ -27,21 +28,38 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).end();
   }
 
-  const adAccountId = '1329'; // TODO: replace ad account id after updating demo product catalog (@sjhan-moloco)
-  const adAccountTitle = 'Test Ad Account';
+  // get adAccountId that is associated with the current user
+  const userId = session.user.id;
+  const firestore = getFirebaseAdminApp().firestore();
+  const userDocSnapshot = await firestore.collection('users').doc(userId).get();
+  const userData = userDocSnapshot.data();
+
+  if (!userDocSnapshot.exists || userData === undefined) {
+    return res.status(404).end();
+  }
+
+  const adAccountId = userData.adAccountId;
+
+  if (!adAccountId) {
+    return res.status(404).end();
+  }
+
+  const adAccountTitle = `Ad Account for ${session.user.email}`;
   const email = session.user.email;
   const externalUserId = session.user.id;
   const name = session.user.email;
   const nonce = nanoid();
   const path = `/embed/sponsored-ads/cm/a/${adAccountId}`;
   const role = 'AD_ACCOUNT_OWNER';
+  const baseUrl = process.env.NEXT_PUBLIC_RMP_PORTAL_URL || '';
   const platformId = process.env.NEXT_PUBLIC_RMP_PLATFORM_ID || '';
   const secret = process.env.RMP_SSO_SECRET || '';
   const colorMode = req.body.colorMode;
   const language = req.body.language;
+  const version = '1.0.0';
 
   const rmpPortalUrl = createSignedRmpPortalUrl({
-    baseUrl: process.env.NEXT_PUBLIC_RMP_PORTAL_URL || '',
+    baseUrl,
     adAccountId,
     adAccountTitle,
     email,
@@ -52,7 +70,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     externalUserId,
     platformId,
     secret,
-    version: '1.0.0',
+    version,
     colorMode,
     language,
   });
