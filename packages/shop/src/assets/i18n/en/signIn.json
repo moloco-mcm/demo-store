@@ -1,0 +1,18 @@
+{
+  "email": {
+    "label": "Email",
+    "errors": {
+      "required": "Enter email.",
+      "email": "Enter a valid email."
+    }
+  },
+  "password": {
+    "label": "Password",
+    "errors": {
+      "required": "Enter password."
+    }
+  },
+  "submitButton": {
+    "label": "Sign In"
+  }
+}

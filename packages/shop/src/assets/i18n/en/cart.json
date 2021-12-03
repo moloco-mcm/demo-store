@@ -1,0 +1,9 @@
+{
+  "title": "Cart",
+  "checkout": "Checkout",
+  "originalPrice": "Original Price",
+  "discount": "Saving",
+  "finalPrice": "Total",
+  "cartIsEmpty": "Your Cart is Empty",
+  "continueShopping": "Continue Shopping"
+}

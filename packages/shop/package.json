@@ -1,0 +1,73 @@
+{
+  "name": "@rmp-demo-store/demo-store",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "yarn build:deps && yarn link:deps && PORT=3001 next dev",
+    "build": "yarn build:deps && yarn link:deps && next build",
+    "build:deps": "yarn workspace @rmp-demo-store/ui build",
+    "link:deps": "cd ../ui/dist && yarn link && cd ../../shop && yarn link @rmp-demo-store/ui",
+    "unlink:deps": "yarn unlink @rmp-demo-store/ui && cd ../ui/dist && yarn unlink",
+    "start": "next start",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "next lint",
+    "hooks:pre-commit": "lint-staged",
+    "storybook": "start-storybook -p 8002 -s public",
+    "build:storybook": "yarn build:deps && yarn link:deps && build-storybook -s public -o build-storybook"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint",
+      "git add"
+    ],
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@hookform/resolvers": "^2.5.2",
+    "@moloco-rmp/decision-api-client": "0.1.1",
+    "@moloco-rmp/user-event-api-client": "0.1.0",
+    "@rmp-demo-store/ui": "^0.1.0",
+    "@sentry/nextjs": "^6.15.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.0",
+    "babel-jest": "^27.2.1",
+    "firebase": "9.0.1",
+    "firebase-admin": "^9.11.1",
+    "i18next": "^21.5.2",
+    "i18next-browser-languagedetector": "^6.1.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.2.1",
+    "lodash": "^4.17.21",
+    "nanoid": "^3.1.25",
+    "next": "11.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.7.1",
+    "react-i18next": "^11.14.2",
+    "react-query": "^3.33.1",
+    "react-test-renderer": "^17.0.2",
+    "styled-components": "^5.3.0",
+    "ua-parser-js": "^0.7.28",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "@netlify/plugin-nextjs": "^4.0.0-beta.1",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/react": "^6.2.9",
+    "@types/react": "17.0.19",
+    "@types/styled-components": "^5.1.9",
+    "@types/ua-parser-js": "^0.7.36",
+    "eslint-config-next": "11.1.2",
+    "netlify-cli": "^6.12.6"
+  }
+}

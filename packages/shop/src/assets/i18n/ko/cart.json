@@ -1,0 +1,9 @@
+{
+  "title": "장비구니",
+  "checkout": "구매하기",
+  "originalPrice": "상품금액",
+  "discount": "할인금액",
+  "finalPrice": "최종 결재금액",
+  "cartIsEmpty": "장바구니가 비어있습니다",
+  "continueShopping": "쇼핑하러가기"
+}
