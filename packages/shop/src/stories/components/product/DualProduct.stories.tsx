@@ -11,7 +11,7 @@ export default {
 const LEFT = {
   product: {
     id: '3606',
-    title: '닭가슴살外 고양이 통살 간식 23종 [모음]',
+    title: 'Hairdressing Scissors Hair Grooming Set',
     price: {
       currency: 'USD',
       amount: 100,
@@ -23,15 +23,16 @@ const LEFT = {
     rating: 4.3,
     reviewCount: 9433,
     imageUrl:
-      'https://images.pet-friends.co.kr/storage/pet_friends/product/id/5/4/6/2/7/9/c/546279c7c5a42561f63ed6f37bd02bc3/10000/0692d8ed0b1a07bb2690f39794375acc.jpeg',
-    description: '맛있는 고양이 간식 모음',
+      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w300/1001_300.png',
+    description:
+      'This adjustable scissors set contains different types of tools, can meet your different needs. There is a screw on the scissors, which allows you to adjust the scissors tightness. The scissors are made of stainless steel, is not easy to be rusted, not easy to deform. It comes with a drawstring bag, let you can easily store these tools, so you can carry them easily. The tools are designed with smooth and fine surface, provide a good touch feeling. Specification: Material: Stainless steel + sponge. Color: Show as picture. Size: Scissors 17cm, Hair clip: 9cm, cleaning cloth: 11x7.5cm. Note There might be a bit color distortions due to different computer resolutions. There might be a slight errors due to different hand measurement. Package included: 1x Straight scissors. 1x Fine line scissors. 2x Hair clip. 1x Tool. 1x Cape. 1x Cleaning cloth. 1x Hairdressing tool. 1x Scissor with tooth. 1x Drawstring bag.',
   },
 };
 
 const RIGHT = {
   product: {
     id: '3602',
-    title: '고양이 낚시대 BEST 24종 [모음]',
+    title: 'Bath Buddy Thermometer',
     price: {
       currency: 'USD',
       amount: 30,
@@ -39,7 +40,7 @@ const RIGHT = {
     rating: 4.3,
     reviewCount: 9433,
     imageUrl:
-      'https://images.pet-friends.co.kr/storage/pet_friends/product/id/a/d/3/4/e/3/d/ad34e3d2d2daa836ecbdca1a20028b5d/10000/f0ab7129674d7d4ed6730ccc540e91f6.jpeg',
+      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w300/1000_300.png',
   },
 };
 
@@ -50,7 +51,7 @@ const AD_LEFT = {
 
 const AD_RIGHT = {
   isAd: true,
-  ...LEFT,
+  ...RIGHT,
 };
 
 const Template: Story<React.ComponentProps<typeof DualProducts>> = (args) => (

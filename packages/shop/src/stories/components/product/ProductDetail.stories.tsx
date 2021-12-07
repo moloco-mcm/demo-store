@@ -10,7 +10,7 @@ export default {
 
 const PRODUCT = {
   id: '3606',
-  title: '닭가슴살外 고양이 통살 간식 23종 [모음]',
+  title: 'Bath Buddy Thermometer',
   price: {
     currency: 'USD',
     amount: 100,
@@ -22,8 +22,9 @@ const PRODUCT = {
   rating: 4.3,
   reviewCount: 9433,
   imageUrl:
-    'https://images.pet-friends.co.kr/storage/pet_friends/product/id/5/4/6/2/7/9/c/546279c7c5a42561f63ed6f37bd02bc3/10000/0692d8ed0b1a07bb2690f39794375acc.jpeg',
-  description: '맛있는 고양이 간식 모음',
+    'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1000_1080.png',
+  description:
+    'Available in a friendly duck design, the Bath Pal floating thermometer helps you keep your baby’s bath water at a comfortable temperature. Its soft edges are baby friendly and allow the baby to be engaged while bathing. You also get to read the temperature continuously and the thermometer works without a battery.',
 };
 
 const Template: Story<React.ComponentProps<typeof ProductDetail>> = (args) => (
