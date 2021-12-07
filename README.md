@@ -10,6 +10,6 @@ A sample web storefront that leverages MOLOCO RMP for ad serving and product rec
 - Sending impression/click event postbacks
 - Feeding user events into MOLOCO RMP via RMP UserEvent API
 
-### 2. Seller Portal (`/packages/shop`)
+### 2. Seller Portal (`/packages/seller-portal`)
 
 A sample back office application that shows how to integrate RMP Embedded Campaign Manager with your existing seller-facing web app.
