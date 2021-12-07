@@ -24,6 +24,7 @@ export const ProductItem = {
     right: 0;
     bottom: 0;
     object-fit: cover;
+    height: 100%;
   `,
   InfoContainer: styled.div`
     padding: ${space(3)};
