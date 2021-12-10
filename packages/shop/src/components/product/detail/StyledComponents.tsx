@@ -24,6 +24,7 @@ export const ProductItem = {
     right: 0;
     bottom: 0;
     object-fit: cover;
+    width: 100%;
     height: 100%;
   `,
   InfoContainer: styled.div`
