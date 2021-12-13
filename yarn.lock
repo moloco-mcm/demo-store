@@ -2546,7 +2546,7 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@moloco-rmp/decision-api-client@^0.1.1":
+"@moloco-rmp/decision-api-client@0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@moloco-rmp/decision-api-client/-/decision-api-client-0.1.1.tgz#6de152fb2c9d0f7b5da7eabfea0d02f7192e53cd"
   integrity sha512-EDLK7DeZstJYW/ZeHktI2FWcLmC6m/tob3Ze4nA+ccX6IYZnlEUfdixLtGQIwiA3at03LT58rIsIHnGlXBiuHQ==
