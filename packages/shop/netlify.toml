@@ -18,7 +18,7 @@
   # Build only when there were changes in the related directory (packages/web, packages/ui, packages/morse-client, packages/mock-api, packages/rmp-api-client)
   # ref: https://docs.netlify.com/configure-builds/common-configurations/ignore-builds/
   # ref: https://answers.netlify.com/t/support-guide-how-to-use-the-ignore-command/37517?_gl=1*my9dz*_gcl_aw*R0NMLjE2Mjc0MjkxMzQuQ2owS0NRanczZjZIQmhESEFSSXNBRF9pM0QtSlE0aDJKd2ZhOGdPUHRnUkUwYzc2MnpVWjV5aVlxdEdmS1lseFhjRGtBUHkwZHdDSUpxd2FBc0lzRUFMd193Y0I.
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF . ../ui/"
+  # ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF . ../ui/"
 
 [build.environment]
   # ref: https://docs.netlify.com/configure-builds/manage-dependencies/#yarn
