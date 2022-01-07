@@ -2553,10 +2553,10 @@
   dependencies:
     axios "^0.21.1"
 
-"@moloco-rmp/user-event-api-client@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@moloco-rmp/user-event-api-client/-/user-event-api-client-0.1.0.tgz#ee43ee05d2656c76b156ad5bb605559dfde11a9d"
-  integrity sha512-UbXT4S4ragaiGGr4X4WA01VI+ahp1hPeaRVfu5rHZj9Rozmx4LOqLVKwjEkxYGS3dLGy36BAoiEoQBV2KTJ4ww==
+"@moloco-rmp/event-api-client@0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@moloco-rmp/event-api-client/-/event-api-client-0.1.1.tgz#42ced4a0b4c103b755d087154e1b1a3e17e5407e"
+  integrity sha512-K9IsbAdhKeyHKUKUvAsjkcoKXfU56li1A0TZmSk1FudOndCpj15KiwA8DyGcAP1yzI4mosSuobfRfqBfwVzvgg==
   dependencies:
     axios "^0.21.1"
 

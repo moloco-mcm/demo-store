@@ -1,4 +1,4 @@
-import { v1 } from '@moloco-rmp/user-event-api-client';
+import { v1 } from '@moloco-rmp/event-api-client';
 import { asyncTryCatch, isAsyncTryCatchError } from '../utils';
 import * as Sentry from '@sentry/nextjs';
 
