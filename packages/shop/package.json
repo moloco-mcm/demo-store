@@ -34,7 +34,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@hookform/resolvers": "^2.5.2",
     "@moloco-rmp/decision-api-client": "0.1.1",
-    "@moloco-rmp/user-event-api-client": "0.1.0",
+    "@moloco-rmp/event-api-client": "0.1.1",
     "@rmp-demo-store/ui": "^0.1.0",
     "@sentry/nextjs": "^6.15.0",
     "@testing-library/jest-dom": "^5.14.1",
