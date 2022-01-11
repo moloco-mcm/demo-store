@@ -32,3 +32,5 @@ The Seller Portal app uses Firebase to authenticate users. Create a Firebase pro
 ### Sentry (Optional)
 
 - NEXT_PUBLIC_SENTRY_DSN: Sentry Data Source Name (ref: https://docs.sentry.io/product/sentry-basics/dsn-explainer/)
+
+© Moloco, Inc. 2022 All rights reserved. Released under Apache 2.0 License
