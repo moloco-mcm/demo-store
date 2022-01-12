@@ -13,3 +13,5 @@ A sample web storefront that leverages MOLOCO RMP for ad serving and product rec
 ### 2. Seller Portal (`/packages/seller-portal`)
 
 A sample back office application that shows how to integrate RMP Embedded Campaign Manager with your existing seller-facing web app.
+
+© Moloco, Inc. 2022 All rights reserved. Released under Apache 2.0 License
