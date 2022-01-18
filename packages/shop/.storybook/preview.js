@@ -6,11 +6,15 @@ import { MemoryRouter } from 'react-router';
 import { createTheme } from '@rmp-demo-store/ui/theme';
 import GlobalStyle from '@rmp-demo-store/ui/global-style';
 import CSSReset from '@rmp-demo-store/ui/css-reset';
+import { RouterContext } from 'next/dist/shared/lib/router-context'; // next 11.1
 
 import '../src/common/i18n';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
+  nextRouter: {
+    Provider: RouterContext.Provider,
+  },
 };
 
 export const decorators = [
