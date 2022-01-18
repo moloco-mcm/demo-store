@@ -9,11 +9,9 @@ export const client = v1.createClient({
 });
 
 export const insertEvent = async (
-  ...params: Parameters<typeof client.events.insertEvent>
+  ...params: Parameters<typeof client.insertEvent>
 ) => {
-  const result = await asyncTryCatch(() =>
-    client.events.insertEvent(...params)
-  );
+  const result = await asyncTryCatch(() => client.insertEvent(...params));
 
   if (isAsyncTryCatchError(result)) {
     const error = result[1];
