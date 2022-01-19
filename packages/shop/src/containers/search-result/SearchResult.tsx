@@ -34,7 +34,7 @@ export const SearchResult: React.FC<Props> = (props) => {
         padding: 0 ${space(2)} ${space(2)} ${space(2)};
       `}
     >
-      {isLoading ?? <SingleProduct isLoading />}
+      {isLoading && <SingleProduct isLoading />}
       {!isLoading &&
         data?.products.map((p) => (
           <SingleProduct
