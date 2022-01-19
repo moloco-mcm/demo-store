@@ -8,6 +8,8 @@ import { ErrorDisplay } from '@rmp-demo-store/ui/error-display';
 
 import useSearch from '../../hooks/use-search';
 import SingleProduct from '../../components/product/single';
+import { ProductDisplayItem } from '../../components/product/types';
+import { useRouter } from 'next/router';
 
 type Props = {
   searchWord: string;
@@ -15,6 +17,8 @@ type Props = {
 
 export const SearchResult: React.FC<Props> = (props) => {
   const { searchWord } = props;
+
+  const router = useRouter();
   const { data, isLoading, isError } = useSearch(searchWord);
   const { t } = useTranslation('common');
 
@@ -26,6 +30,11 @@ export const SearchResult: React.FC<Props> = (props) => {
     );
   }
 
+  const handleItemClick = (item: ProductDisplayItem) => {
+    const { product } = item;
+    router.push(`/products/${product.id}`);
+  };
+
   return (
     <Stack
       direction="column"
@@ -36,12 +45,13 @@ export const SearchResult: React.FC<Props> = (props) => {
     >
       {isLoading && <SingleProduct isLoading />}
       {!isLoading &&
-        data?.products.map((p) => (
+        data?.products.map((p, index) => (
           <SingleProduct
-            key={p.id}
+            key={`${p.id}-${index}`}
             item={{
               product: p,
             }}
+            onClickItem={handleItemClick}
           />
         ))}
     </Stack>

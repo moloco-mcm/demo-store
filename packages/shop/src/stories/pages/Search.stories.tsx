@@ -14,6 +14,13 @@ export default {
     controls: {
       hideNoControlsWarning: true,
     },
+    nextRouter: {
+      path: '/search',
+      asPath: '/search',
+      query: {
+        searchWord: 'test',
+      },
+    },
   },
   decorators: [reactQueryClientProviderDecorator()],
 } as Meta;
