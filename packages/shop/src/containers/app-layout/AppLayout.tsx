@@ -12,10 +12,11 @@ import useCart from '../../hooks/use-cart';
 
 type Props = React.PropsWithChildren<React.ComponentProps<typeof NavBar>> & {
   showTabBar?: boolean;
+  hideNavBar?: boolean;
 };
 
 export const AppLayout = (props: Props) => {
-  const { children, showTabBar, ...rest } = props;
+  const { children, showTabBar, hideNavBar, ...rest } = props;
   const pageLoaderRef = React.useRef<PageLoaderRef | null>(null);
   const router = useRouter();
   // prevent 403 error from being reported
@@ -48,7 +49,7 @@ export const AppLayout = (props: Props) => {
 
   return (
     <MainLayout withSafeArea={showTabBar}>
-      <NavBar {...rest} numOfItemsInCart={numOfItemsInCart} />
+      {!hideNavBar && <NavBar {...rest} numOfItemsInCart={numOfItemsInCart} />}
       <div
         css={`
           position: absolute;
