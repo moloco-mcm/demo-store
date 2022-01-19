@@ -9,13 +9,10 @@ import Stack from '@rmp-demo-store/ui/stack';
 import { space, zIndex } from '@rmp-demo-store/ui/theme-utils';
 
 import AppLayout from '../../containers/app-layout';
-import SingleProduct from '../../components/product/single';
-import useSearch from '../../hooks/use-search';
+import SearchResult from '../../containers/search-result';
 
 const Search: NextPage<{}> = () => {
   const [searchWord, setSearchWord] = React.useState('');
-
-  const { data } = useSearch(searchWord);
 
   const handleSearchWordInputChange: React.ChangeEventHandler<
     HTMLInputElement
@@ -46,22 +43,7 @@ const Search: NextPage<{}> = () => {
           />
           <Button variant="ghost">Cancel</Button>
         </Stack>
-        <Stack
-          direction="column"
-          spacing={2}
-          css={`
-            padding: 0 ${space(2)} ${space(2)} ${space(2)};
-          `}
-        >
-          {data?.products.map((p) => (
-            <SingleProduct
-              key={p.id}
-              item={{
-                product: p,
-              }}
-            />
-          ))}
-        </Stack>
+        <SearchResult searchWord={searchWord} />
       </AppLayout>
     </>
   );
