@@ -1,14 +1,14 @@
 import React from 'react';
 import 'styled-components/macro';
 import { useTranslation } from 'react-i18next';
+import { useRouter } from 'next/router';
 
 import { ErrorDisplay } from '@rmp-demo-store/ui/error-display';
+import Spinner from '@rmp-demo-store/ui/spinner';
 
 import useSearch from '../../hooks/use-search';
 import SingleProduct from '../../components/product/single';
 import { ProductDisplayItem } from '../../components/product/types';
-import { useRouter } from 'next/router';
-import Button from '@rmp-demo-store/ui/button';
 
 type Props = {
   searchWord: string;
@@ -18,8 +18,14 @@ export const SearchResult: React.FC<Props> = (props) => {
   const { searchWord } = props;
 
   const router = useRouter();
-  const { data, isLoading, isError, hasNextPage, fetchNextPage } =
-    useSearch(searchWord);
+  const {
+    data,
+    isLoading,
+    isError,
+    hasNextPage,
+    isFetchingNextPage,
+    fetchNextPage,
+  } = useSearch(searchWord);
   const { t } = useTranslation('common');
 
   if (isError) {
@@ -34,7 +40,6 @@ export const SearchResult: React.FC<Props> = (props) => {
     return <SingleProduct isLoading />;
   }
 
-  // empty
   if (data?.pages.length === 1 && data?.pages[0].products.length === 0) {
     return <div>No results</div>;
   }
@@ -44,23 +49,43 @@ export const SearchResult: React.FC<Props> = (props) => {
     router.push(`/products/${product.id}`);
   };
 
+  const handleLastItemVisible = () => {
+    fetchNextPage();
+  };
+
   return (
     <>
-      {data?.pages.map((page) => {
-        return page.products.map((p, index) => (
-          <SingleProduct
-            key={`${p.id}-${index}`}
-            item={{
-              product: p,
-            }}
-            onClickItem={handleItemClick}
-          />
-        ));
+      {data?.pages.map((page, pageIndex) => {
+        const isLastPage = data.pages.length - 1 === pageIndex;
+
+        return page.products.map((p, index) => {
+          const isLastItem = page.products.length - 1 === index;
+
+          return (
+            <SingleProduct
+              key={`${p.id}-${index}`}
+              item={{
+                product: p,
+              }}
+              onClickItem={handleItemClick}
+              onVisibleItem={
+                isLastPage && isLastItem && hasNextPage
+                  ? handleLastItemVisible
+                  : undefined
+              }
+            />
+          );
+        });
       })}
-      {hasNextPage && (
-        <Button variant="ghost" onClick={() => fetchNextPage()}>
-          Load more...
-        </Button>
+      {isFetchingNextPage && (
+        <div
+          css={`
+            display: flex;
+            justify-content: center;
+          `}
+        >
+          <Spinner />
+        </div>
       )}
     </>
   );
