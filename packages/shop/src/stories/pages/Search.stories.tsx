@@ -175,6 +175,7 @@ Basic.parameters = {
                 'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1010_1080.png',
             },
           ],
+          hasNextPage: true,
         })
       );
     }),
@@ -197,6 +198,21 @@ Error.parameters = {
   msw: [
     rest.post('/api/search', (_req, res, ctx) => {
       return res(ctx.status(500));
+    }),
+  ],
+};
+
+export const NoResult = Template.bind({});
+NoResult.args = {};
+NoResult.parameters = {
+  msw: [
+    rest.post('/api/search', (_req, res, ctx) => {
+      return res(
+        ctx.json({
+          products: [],
+          hasNextPage: false,
+        })
+      );
     }),
   ],
 };

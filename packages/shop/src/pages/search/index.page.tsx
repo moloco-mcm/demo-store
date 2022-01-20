@@ -99,9 +99,17 @@ const Search: NextPage<{}> = () => {
           />
           {/* <Button variant="ghost">Cancel</Button> */}
         </Stack>
-        {searchWordQueryParam !== undefined && (
-          <SearchResult searchWord={searchWordQueryParam} />
-        )}
+        <Stack
+          direction="column"
+          spacing={2}
+          css={`
+            padding: 0 ${space(2)} ${space(2)} ${space(2)};
+          `}
+        >
+          {searchWordQueryParam !== undefined && (
+            <SearchResult searchWord={searchWordQueryParam} />
+          )}
+        </Stack>
       </AppLayout>
     </>
   );

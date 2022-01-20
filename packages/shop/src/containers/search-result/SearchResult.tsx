@@ -2,8 +2,6 @@ import React from 'react';
 import 'styled-components/macro';
 import { useTranslation } from 'react-i18next';
 
-import Stack from '@rmp-demo-store/ui/stack';
-import { space } from '@rmp-demo-store/ui/theme-utils';
 import { ErrorDisplay } from '@rmp-demo-store/ui/error-display';
 
 import useSearch from '../../hooks/use-search';
@@ -32,37 +30,38 @@ export const SearchResult: React.FC<Props> = (props) => {
     );
   }
 
+  if (isLoading) {
+    return <SingleProduct isLoading />;
+  }
+
+  // empty
+  if (data?.pages.length === 1 && data?.pages[0].products.length === 0) {
+    return <div>No results</div>;
+  }
+
   const handleItemClick = (item: ProductDisplayItem) => {
     const { product } = item;
     router.push(`/products/${product.id}`);
   };
 
   return (
-    <Stack
-      direction="column"
-      spacing={2}
-      css={`
-        padding: 0 ${space(2)} ${space(2)} ${space(2)};
-      `}
-    >
-      {isLoading && <SingleProduct isLoading />}
-      {!isLoading &&
-        data?.pages.map((page) => {
-          return page.products.map((p, index) => (
-            <SingleProduct
-              key={`${p.id}-${index}`}
-              item={{
-                product: p,
-              }}
-              onClickItem={handleItemClick}
-            />
-          ));
-        })}
+    <>
+      {data?.pages.map((page) => {
+        return page.products.map((p, index) => (
+          <SingleProduct
+            key={`${p.id}-${index}`}
+            item={{
+              product: p,
+            }}
+            onClickItem={handleItemClick}
+          />
+        ));
+      })}
       {hasNextPage && (
         <Button variant="ghost" onClick={() => fetchNextPage()}>
           Load more...
         </Button>
       )}
-    </Stack>
+    </>
   );
 };
