@@ -30,7 +30,13 @@ const Search: NextPage<{}> = () => {
     return undefined;
   })();
 
-  const [searchWord, setSearchWord] = React.useState(searchWordQueryParam);
+  const [searchWord, setSearchWord] = React.useState(
+    () => searchWordQueryParam
+  );
+
+  React.useEffect(() => {
+    setSearchWord(searchWordQueryParam);
+  }, [searchWordQueryParam]);
 
   const handleBackButtonClick = () => {
     if (history.length === 1) {
@@ -84,6 +90,7 @@ const Search: NextPage<{}> = () => {
             <FontAwesomeIcon icon={faArrowLeft} size="lg" fixedWidth />
           </IconButton>
           <Input
+            id="searchWord"
             type="text"
             value={searchWord}
             autoFocus

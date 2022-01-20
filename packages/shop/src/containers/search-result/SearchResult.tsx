@@ -10,6 +10,7 @@ import useSearch from '../../hooks/use-search';
 import SingleProduct from '../../components/product/single';
 import { ProductDisplayItem } from '../../components/product/types';
 import { useRouter } from 'next/router';
+import Button from '@rmp-demo-store/ui/button';
 
 type Props = {
   searchWord: string;
@@ -19,7 +20,8 @@ export const SearchResult: React.FC<Props> = (props) => {
   const { searchWord } = props;
 
   const router = useRouter();
-  const { data, isLoading, isError } = useSearch(searchWord);
+  const { data, isLoading, isError, hasNextPage, fetchNextPage } =
+    useSearch(searchWord);
   const { t } = useTranslation('common');
 
   if (isError) {
@@ -45,15 +47,22 @@ export const SearchResult: React.FC<Props> = (props) => {
     >
       {isLoading && <SingleProduct isLoading />}
       {!isLoading &&
-        data?.products.map((p, index) => (
-          <SingleProduct
-            key={`${p.id}-${index}`}
-            item={{
-              product: p,
-            }}
-            onClickItem={handleItemClick}
-          />
-        ))}
+        data?.pages.map((page) => {
+          return page.products.map((p, index) => (
+            <SingleProduct
+              key={`${p.id}-${index}`}
+              item={{
+                product: p,
+              }}
+              onClickItem={handleItemClick}
+            />
+          ));
+        })}
+      {hasNextPage && (
+        <Button variant="ghost" onClick={() => fetchNextPage()}>
+          Load more...
+        </Button>
+      )}
     </Stack>
   );
 };
