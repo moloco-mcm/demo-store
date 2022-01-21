@@ -223,7 +223,7 @@ const postHandler: NextApiHandler<SearchApiResponse> = async (req, res) => {
     return res.status(400).json(apiStandardError('BAD_REQUEST'));
   }
 
-  const { searchWord, pageIndex } = body;
+  const { pageIndex } = body;
 
   // TODO: implement search (@sjhan-moloco)
   // return mock response
