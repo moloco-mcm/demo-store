@@ -38,140 +38,180 @@ export const isValidSearchRequestBody = (
 
 const MOCK_PRODUCTS: Product[] = [
   {
-    id: '3600',
-    title: 'Bath Buddy Thermometer',
+    id: '1625',
+    title: 'Stainless Steel kettle for Drinking Coffee ',
     price: {
       currency: 'USD',
-      amount: 100,
+      amount: 16.93,
+    },
+    salePrice: {
+      amount: 10.16,
+      currency: 'USD',
+    },
+    imageUrl:
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1625_1080.png',
+    reviewCount: 0,
+    rating: 0,
+  },
+  {
+    id: '1661',
+    title: 'Girl Drinking Milk wallpaper',
+    price: {
+      currency: 'USD',
+      amount: 69.11,
+    },
+    salePrice: {
+      amount: 62.2,
+      currency: 'USD',
+    },
+    imageUrl:
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1661_1080.png',
+    reviewCount: 0,
+    rating: 0,
+  },
+  {
+    id: '1511',
+    title: "Women's Tank Top, violet",
+    price: {
+      currency: 'USD',
+      amount: 13.99,
     },
     salePrice: {
       currency: 'USD',
-      amount: 80,
+      amount: 11.19,
     },
-    rating: 4.3,
-    reviewCount: 9433,
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1000_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1511_1080.png',
+    reviewCount: 66,
+    rating: 4.9,
   },
   {
-    id: '3601',
-    title: 'Hairdressing Scissors Hair Grooming Set',
+    id: '1269',
+    title: 'Energy Beauty Tool Facial Beauty Care ',
     price: {
+      amount: 20.6,
       currency: 'USD',
-      amount: 2600,
     },
-    rating: 4.3,
-    reviewCount: 2600,
+    salePrice: {
+      currency: 'USD',
+      amount: 16.48,
+    },
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1001_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1269_1080.png',
+    reviewCount: 0,
+    rating: 0,
   },
   {
-    id: '3602',
-    title: 'Baby Soothing Body Wash',
+    id: '1287',
+    title: 'Daily Face Sunscreen Lotion',
     price: {
+      amount: 13.37,
       currency: 'USD',
-      amount: 12400,
     },
-    rating: 4.3,
-    reviewCount: 9433,
+    salePrice: {
+      amount: 10.7,
+      currency: 'USD',
+    },
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1002_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1287_1080.png',
+    reviewCount: 57,
+    rating: 4.8,
   },
   {
-    id: '3603',
-    title: 'Birthday party paper shavings',
+    id: '1512',
+    title: 'Tailgator Glove with Drink Holder',
     price: {
       currency: 'USD',
-      amount: 17000,
+      amount: 28,
     },
-    rating: 4.3,
-    reviewCount: 9433,
+    salePrice: {
+      amount: 19.6,
+      currency: 'USD',
+    },
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1003_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1512_1080.png',
+    reviewCount: 2,
+    rating: 4.5,
   },
   {
-    id: '3604',
-    title: 'Baby Shea Butter Oil Rub w/ Argan Oil',
+    id: '1821',
+    title: 'Airplane Plasma wall decor',
     price: {
       currency: 'USD',
-      amount: 129,
+      amount: 95.26,
     },
-    rating: 4.3,
-    reviewCount: 9433,
+    salePrice: {
+      currency: 'USD',
+      amount: 57.16,
+    },
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1004_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1821_1080.png',
+    reviewCount: 10,
+    rating: 2.7,
   },
   {
-    id: '3605',
-    title: 'Baby Shampoo Cap',
+    id: '2026',
+    title: 'Ethnic Girlish Flared Skirt, green',
     price: {
       currency: 'USD',
-      amount: 100,
+      amount: 45.99,
     },
-    rating: 4.3,
-    reviewCount: 9433,
+    salePrice: {
+      amount: 27.59,
+      currency: 'USD',
+    },
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1005_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/2026_1080.png',
+    reviewCount: 24,
+    rating: 4.3,
   },
   {
-    id: '3606',
-    title: 'Silicone Skin Cream',
+    id: '1772',
+    title: "Men's black hoodie, XL",
     price: {
       currency: 'USD',
-      amount: 2600,
+      amount: 25.99,
     },
-    rating: 4.3,
-    reviewCount: 2600,
+    salePrice: {
+      amount: 15.59,
+      currency: 'USD',
+    },
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1006_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1772_1080.png',
+    reviewCount: 24,
+    rating: 4.3,
   },
   {
-    id: '3607',
-    title: 'Diaper Rash Cream',
+    id: '1773',
+    title: "Men's hoodie, pink",
     price: {
       currency: 'USD',
-      amount: 12400,
+      amount: 45.7,
     },
-    rating: 4.3,
-    reviewCount: 9433,
+    salePrice: {
+      currency: 'USD',
+      amount: 45.7,
+    },
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1007_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1773_1080.png',
+    reviewCount: 110,
+    rating: 4.3,
   },
   {
-    id: '3608',
-    title: 'Ezcema Care Moisturizing Cream',
+    id: '1222',
+    title: 'Deep Pore Medicated Acne Pads',
     price: {
+      amount: 7.47,
       currency: 'USD',
-      amount: 17000,
     },
-    rating: 4.3,
-    reviewCount: 9433,
-    imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1008_1080.png',
-  },
-  {
-    id: '3609',
-    title: 'Baby  Powder',
-    price: {
+    salePrice: {
+      amount: 5.23,
       currency: 'USD',
-      amount: 129,
     },
-    rating: 4.3,
-    reviewCount: 9433,
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1009_1080.png',
-  },
-  {
-    id: '3610',
-    title: 'Baby Food Container ',
-    price: {
-      currency: 'USD',
-      amount: 100,
-    },
-    rating: 4.3,
-    reviewCount: 9433,
-    imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1010_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1222_1080.png',
+    reviewCount: 19,
+    rating: 4.4,
   },
 ];
 
