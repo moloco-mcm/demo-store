@@ -24,6 +24,7 @@ type Props = {
   inventoryId: string;
   items?: string[];
   enabled?: boolean;
+  searchQuery?: string;
 };
 
 type SponsoredItem = DecidedItem & { isAd?: boolean };
@@ -37,6 +38,7 @@ export const SponsoredProducts = (props: Props) => {
     inventoryId,
     items,
     enabled = true,
+    searchQuery,
   } = props;
 
   const router = useRouter();
@@ -47,6 +49,7 @@ export const SponsoredProducts = (props: Props) => {
     numOfItems: 10,
     items,
     enabled,
+    searchQuery,
   });
 
   const sponsoredItems = data?.items.map((item) => ({ isAd: true, ...item }));

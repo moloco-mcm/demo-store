@@ -5,7 +5,7 @@ import 'styled-components/macro';
 import { useRouter } from 'next/router';
 
 import Input from '@rmp-demo-store/ui/input';
-import Button, { IconButton } from '@rmp-demo-store/ui/button';
+import { IconButton } from '@rmp-demo-store/ui/button';
 import Stack from '@rmp-demo-store/ui/stack';
 import { space, zIndex } from '@rmp-demo-store/ui/theme-utils';
 
@@ -13,6 +13,7 @@ import AppLayout from '../../containers/app-layout';
 import SearchResult from '../../containers/search-result';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import SponsoredProducts from '../../containers/sponsored-products';
 
 const Search: NextPage<{}> = () => {
   const router = useRouter();
@@ -97,19 +98,13 @@ const Search: NextPage<{}> = () => {
             onChange={handleSearchWordInputChange}
             onKeyDown={handleSearchWordInputKeyDown}
           />
-          {/* <Button variant="ghost">Cancel</Button> */}
         </Stack>
-        <Stack
-          direction="column"
-          spacing={2}
-          css={`
-            padding: 0 ${space(2)} ${space(2)} ${space(2)};
-          `}
-        >
-          {searchWordQueryParam !== undefined && (
+
+        {searchWordQueryParam && (
+          <>
             <SearchResult searchWord={searchWordQueryParam} />
-          )}
-        </Stack>
+          </>
+        )}
       </AppLayout>
     </>
   );

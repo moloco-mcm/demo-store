@@ -6,10 +6,16 @@ import {
   SearchApiErrorResponse,
 } from '../../pages/api/search/post';
 
-const STALE_TIME = 1000 * 60 * 3;
 const QUERY_KEY = 'search';
 
-export const useSearch = (searchWord: string) => {
+type Options = {
+  searchWord: string;
+  staleTime?: number;
+};
+
+export const useSearch = (options: Options) => {
+  const { searchWord, staleTime } = options;
+
   return useInfiniteQuery<SearchApiSuccessResponse, SearchApiErrorResponse>(
     [QUERY_KEY, searchWord],
     async ({ pageParam = 1 }) => {
@@ -40,7 +46,7 @@ export const useSearch = (searchWord: string) => {
         }
         return pages.length + 1;
       },
-      staleTime: STALE_TIME,
+      staleTime,
     }
   );
 };
