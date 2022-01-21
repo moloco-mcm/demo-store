@@ -16,7 +16,6 @@ import Carousel from '../../components/product/carousel';
 import { fireTrackingEvents } from '../../common/utils/tracker';
 import { DecidedItem } from '../../common/types';
 import { SectionTitle } from './StyledComponents';
-import { t } from 'i18next';
 
 type Props = {
   searchWord: string;
@@ -107,7 +106,7 @@ export const SearchResult: React.FC<Props> = (props) => {
 
   return (
     <>
-      {!isAdsError && (
+      {!isAdsError && sponsoredItems && sponsoredItems?.length > 0 && (
         <section>
           <SectionTitle>{searchT('sponsoredProducts')}</SectionTitle>
           <Carousel
@@ -167,15 +166,19 @@ export const SearchResult: React.FC<Props> = (props) => {
             </Stack>
           </>
         ) : (
-          <div
+          <ErrorDisplay
+            size="sm"
             css={`
-              display: flex;
-              justify-content: center;
               padding: ${space(6)} 0;
             `}
           >
-            No results.
-          </div>
+            <ErrorDisplay.Title>
+              {searchT('noResults.title', { searchWord })}
+            </ErrorDisplay.Title>
+            <ErrorDisplay.Message>
+              {searchT('noResults.message')}
+            </ErrorDisplay.Message>
+          </ErrorDisplay>
         )}
       </section>
     </>

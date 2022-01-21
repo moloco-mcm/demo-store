@@ -164,6 +164,22 @@ const MOCK_PRODUCTS = [
   },
 ];
 
+const mockAuctionApiHandler = rest.post(
+  '/api/rmp/auction',
+  (_req, res, ctx) => {
+    return res(
+      ctx.delay(100),
+      ctx.json({
+        items: MOCK_PRODUCTS.map((p) => ({
+          product: p,
+          clickTrackers: [],
+          impTrackers: [],
+        })),
+      })
+    );
+  }
+);
+
 const Template: Story<React.ComponentProps<typeof Search>> = (args) => (
   <Search {...args} />
 );
@@ -172,18 +188,7 @@ export const Basic = Template.bind({});
 Basic.args = {};
 Basic.parameters = {
   msw: [
-    rest.post('/api/rmp/auction', (_req, res, ctx) => {
-      return res(
-        ctx.delay(100),
-        ctx.json({
-          items: MOCK_PRODUCTS.map((p) => ({
-            product: p,
-            clickTrackers: [],
-            impTrackers: [],
-          })),
-        })
-      );
-    }),
+    mockAuctionApiHandler,
     rest.post('/api/search', (_req, res, ctx) => {
       return res(
         ctx.delay(100),
@@ -200,6 +205,7 @@ export const Loading = Template.bind({});
 Loading.args = {};
 Loading.parameters = {
   msw: [
+    mockAuctionApiHandler,
     rest.post('/api/search', (_req, res, ctx) => {
       return res(ctx.delay(1_000_000), ctx.status(500));
     }),
@@ -210,6 +216,7 @@ export const Error = Template.bind({});
 Error.args = {};
 Error.parameters = {
   msw: [
+    mockAuctionApiHandler,
     rest.post('/api/search', (_req, res, ctx) => {
       return res(ctx.status(500));
     }),
@@ -220,6 +227,7 @@ export const NoResult = Template.bind({});
 NoResult.args = {};
 NoResult.parameters = {
   msw: [
+    mockAuctionApiHandler,
     rest.post('/api/search', (_req, res, ctx) => {
       return res(
         ctx.json({
