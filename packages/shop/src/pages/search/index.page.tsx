@@ -3,7 +3,6 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import 'styled-components/macro';
 import { useRouter } from 'next/router';
-import { useTranslation } from 'react-i18next';
 
 import Input from '@rmp-demo-store/ui/input';
 import { IconButton } from '@rmp-demo-store/ui/button';
@@ -17,7 +16,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Search: NextPage<{}> = () => {
   const router = useRouter();
-  const { t } = useTranslation('search');
 
   const searchWordQueryParam = (() => {
     const { query } = router;
@@ -71,7 +69,7 @@ const Search: NextPage<{}> = () => {
   return (
     <>
       <Head>
-        <title>Demo Store - Search</title>
+        <title>Demo Store {searchWord && `- ${searchWord}`}</title>
       </Head>
       <AppLayout hideNavBar>
         <Stack
