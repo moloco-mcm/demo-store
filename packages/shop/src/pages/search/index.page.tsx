@@ -34,25 +34,23 @@ const Search: NextPage<{}> = () => {
     router.back();
   };
 
-  const handleSearchWordInputChange: React.ChangeEventHandler<
-    HTMLInputElement
-  > = (e) => {
-    const { value } = e.target;
-    setSearchWord(value);
-  };
+  const handleSearchWordInputChange: React.ChangeEventHandler<HTMLInputElement> =
+    (e) => {
+      const { value } = e.target;
+      setSearchWord(value);
+    };
 
-  const handleSearchWordInputKeyDown: React.KeyboardEventHandler<
-    HTMLInputElement
-  > = (e) => {
-    if (e.key !== 'Enter') return;
+  const handleSearchWordInputKeyDown: React.KeyboardEventHandler<HTMLInputElement> =
+    (e) => {
+      if (e.key !== 'Enter') return;
 
-    router.replace({
-      pathname: router.pathname,
-      query: {
-        searchWord,
-      },
-    });
-  };
+      router.replace({
+        pathname: router.pathname,
+        query: {
+          searchWord,
+        },
+      });
+    };
 
   return (
     <>

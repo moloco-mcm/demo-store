@@ -16,10 +16,7 @@ export default {
     },
     nextRouter: {
       path: '/search',
-      asPath: '/search',
-      query: {
-        searchWord: 'test',
-      },
+      asPath: '/search?searchWord=test',
     },
   },
   decorators: [reactQueryClientProviderDecorator()],
