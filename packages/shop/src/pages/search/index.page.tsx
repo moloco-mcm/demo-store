@@ -3,40 +3,28 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import 'styled-components/macro';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import Input from '@rmp-demo-store/ui/input';
 import { IconButton } from '@rmp-demo-store/ui/button';
 import Stack from '@rmp-demo-store/ui/stack';
 import { space, zIndex } from '@rmp-demo-store/ui/theme-utils';
 
+import useQueryParams from '../../hooks/use-query-params';
 import AppLayout from '../../containers/app-layout';
 import SearchResult from '../../containers/search-result';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Search: NextPage<{}> = () => {
   const router = useRouter();
+  const { t } = useTranslation('search');
 
-  const searchWordQueryParam = (() => {
-    const { query } = router;
-    if (typeof query.searchWord === 'string') {
-      return query.searchWord;
-    }
-
-    if (typeof query.searchWord === 'object') {
-      return query.searchWord[0];
-    }
-
-    return undefined;
-  })();
+  const { searchWord: searchWordQueryParam } = useQueryParams();
 
   const [searchWord, setSearchWord] = React.useState(
     () => searchWordQueryParam
   );
-
-  React.useEffect(() => {
-    setSearchWord(searchWordQueryParam);
-  }, [searchWordQueryParam]);
 
   const handleBackButtonClick = () => {
     if (history.length === 1) {
@@ -93,6 +81,7 @@ const Search: NextPage<{}> = () => {
             id="searchWord"
             type="text"
             value={searchWord}
+            placeholder={t('search')}
             autoFocus
             onChange={handleSearchWordInputChange}
             onKeyDown={handleSearchWordInputKeyDown}
