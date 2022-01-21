@@ -3,6 +3,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import 'styled-components/macro';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
 
 import Input from '@rmp-demo-store/ui/input';
 import { IconButton } from '@rmp-demo-store/ui/button';
@@ -13,10 +14,10 @@ import AppLayout from '../../containers/app-layout';
 import SearchResult from '../../containers/search-result';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import SponsoredProducts from '../../containers/sponsored-products';
 
 const Search: NextPage<{}> = () => {
   const router = useRouter();
+  const { t } = useTranslation('search');
 
   const searchWordQueryParam = (() => {
     const { query } = router;
@@ -99,11 +100,8 @@ const Search: NextPage<{}> = () => {
             onKeyDown={handleSearchWordInputKeyDown}
           />
         </Stack>
-
         {searchWordQueryParam && (
-          <>
-            <SearchResult searchWord={searchWordQueryParam} />
-          </>
+          <SearchResult searchWord={searchWordQueryParam} />
         )}
       </AppLayout>
     </>

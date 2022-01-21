@@ -19,6 +19,9 @@ import koAccount from './ko/account.json';
 import enCheckoutComplete from './en/checkoutComplete.json';
 import koCheckoutComplete from './ko/checkoutComplete.json';
 
+import enSearch from './en/search.json';
+import koSearch from './ko/search.json';
+
 export const defaultNS = 'common';
 
 export const resources = {
@@ -30,6 +33,7 @@ export const resources = {
     productDetail: enProductDetail,
     account: enAccount,
     checkoutComplete: enCheckoutComplete,
+    search: enSearch,
   },
   ko: {
     common: koCommon,
@@ -39,6 +43,7 @@ export const resources = {
     productDetail: koProductDetail,
     account: koAccount,
     checkoutComplete: koCheckoutComplete,
+    search: koSearch,
   },
 } as const;
 

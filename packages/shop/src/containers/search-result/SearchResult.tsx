@@ -16,6 +16,7 @@ import Carousel from '../../components/product/carousel';
 import { fireTrackingEvents } from '../../common/utils/tracker';
 import { DecidedItem } from '../../common/types';
 import { SectionTitle } from './StyledComponents';
+import { t } from 'i18next';
 
 type Props = {
   searchWord: string;
@@ -51,7 +52,8 @@ export const SearchResult: React.FC<Props> = (props) => {
     fetchNextPage,
   } = useSearch({ searchWord, staleTime: STALE_TIME });
 
-  const { t } = useTranslation('common');
+  const { t: commonT } = useTranslation('common');
+  const { t: searchT } = useTranslation('search');
 
   if (isError) {
     return (
@@ -61,7 +63,7 @@ export const SearchResult: React.FC<Props> = (props) => {
           padding: ${space(6)} 0;
         `}
       >
-        <ErrorDisplay.Title>{t('error.title')}</ErrorDisplay.Title>
+        <ErrorDisplay.Title>{commonT('error.title')}</ErrorDisplay.Title>
       </ErrorDisplay>
     );
   }
@@ -107,7 +109,7 @@ export const SearchResult: React.FC<Props> = (props) => {
     <>
       {!isAdsError && (
         <section>
-          <SectionTitle>Sponsored Products</SectionTitle>
+          <SectionTitle>{searchT('sponsoredProducts')}</SectionTitle>
           <Carousel
             numOfRows={1}
             isLoading={isAdsLoading}
@@ -120,7 +122,9 @@ export const SearchResult: React.FC<Props> = (props) => {
       <section>
         {hasSearchResult ? (
           <>
-            <SectionTitle>{`Search results for "${searchWord}"`}</SectionTitle>
+            <SectionTitle>
+              {searchT('searchResult', { searchWord })}
+            </SectionTitle>
             <Stack
               direction="column"
               spacing={2}
