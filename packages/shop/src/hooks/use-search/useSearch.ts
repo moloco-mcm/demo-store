@@ -20,7 +20,7 @@ export const useSearch = (options: Options) => {
     [QUERY_KEY, searchWord],
     async ({ pageParam = 1 }) => {
       const body: SearchApiRequestBody = {
-        searchWord,
+        searchWord: searchWord.trim(),
         pageIndex: pageParam,
       };
 
