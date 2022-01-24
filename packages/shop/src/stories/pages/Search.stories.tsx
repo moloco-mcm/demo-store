@@ -204,7 +204,13 @@ Loading.parameters = {
   msw: [
     mockAuctionApiHandler,
     rest.post('/api/search', (_req, res, ctx) => {
-      return res(ctx.delay(1_000_000), ctx.status(500));
+      return res(
+        ctx.delay(1_000_000),
+        ctx.json({
+          products: MOCK_PRODUCTS,
+          hasNextPage: true,
+        })
+      );
     }),
   ],
 };
