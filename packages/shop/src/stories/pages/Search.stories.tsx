@@ -37,7 +37,7 @@ const MOCK_PRODUCTS = [
     rating: 4.3,
     reviewCount: 9433,
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1000_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1000_1080.png',
   },
   {
     id: '3601',
@@ -49,7 +49,7 @@ const MOCK_PRODUCTS = [
     rating: 4.3,
     reviewCount: 2600,
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1001_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1001_1080.png',
   },
   {
     id: '3602',
@@ -61,7 +61,7 @@ const MOCK_PRODUCTS = [
     rating: 4.3,
     reviewCount: 9433,
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1002_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1002_1080.png',
   },
   {
     id: '3603',
@@ -73,7 +73,7 @@ const MOCK_PRODUCTS = [
     rating: 4.3,
     reviewCount: 9433,
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1003_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1003_1080.png',
   },
   {
     id: '3604',
@@ -85,7 +85,7 @@ const MOCK_PRODUCTS = [
     rating: 4.3,
     reviewCount: 9433,
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1004_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1004_1080.png',
   },
   {
     id: '3605',
@@ -97,7 +97,7 @@ const MOCK_PRODUCTS = [
     rating: 4.3,
     reviewCount: 9433,
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1005_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1005_1080.png',
   },
   {
     id: '3606',
@@ -109,7 +109,7 @@ const MOCK_PRODUCTS = [
     rating: 4.3,
     reviewCount: 2600,
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1006_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1006_1080.png',
   },
   {
     id: '3607',
@@ -121,7 +121,7 @@ const MOCK_PRODUCTS = [
     rating: 4.3,
     reviewCount: 9433,
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1007_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1007_1080.png',
   },
   {
     id: '3608',
@@ -133,7 +133,7 @@ const MOCK_PRODUCTS = [
     rating: 4.3,
     reviewCount: 9433,
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1008_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1008_1080.png',
   },
   {
     id: '3609',
@@ -145,7 +145,7 @@ const MOCK_PRODUCTS = [
     rating: 4.3,
     reviewCount: 9433,
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1009_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1009_1080.png',
   },
   {
     id: '3610',
@@ -157,7 +157,7 @@ const MOCK_PRODUCTS = [
     rating: 4.3,
     reviewCount: 9433,
     imageUrl:
-      'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1010_1080.png',
+      'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1010_1080.png',
   },
 ];
 
