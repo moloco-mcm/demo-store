@@ -6,11 +6,11 @@ import { useRouter } from 'next/router';
 import { ErrorDisplay } from '@rmp-demo-store/ui/error-display';
 import Spinner from '@rmp-demo-store/ui/spinner';
 import Stack from '@rmp-demo-store/ui/stack';
+import { space } from '@rmp-demo-store/ui/theme-utils';
 
 import useSearch from '../../hooks/use-search';
 import SingleProduct from '../../components/product/single';
 import { ProductDisplayItem } from '../../components/product/types';
-import { space } from '@rmp-demo-store/ui/theme-utils';
 import useSponsoredProducts from '../../hooks/use-sponsored-products';
 import Carousel from '../../components/product/carousel';
 import { fireTrackingEvents } from '../../common/utils/tracker';
