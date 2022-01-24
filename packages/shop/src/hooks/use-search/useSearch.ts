@@ -16,11 +16,13 @@ type Options = {
 export const useSearch = (options: Options) => {
   const { searchWord, staleTime } = options;
 
+  const trimmedSearchWord = searchWord.trim();
+
   return useInfiniteQuery<SearchApiSuccessResponse, SearchApiErrorResponse>(
     [QUERY_KEY, searchWord],
     async ({ pageParam = 1 }) => {
       const body: SearchApiRequestBody = {
-        searchWord: searchWord.trim(),
+        searchWord: trimmedSearchWord,
         pageIndex: pageParam,
       };
 
@@ -39,7 +41,7 @@ export const useSearch = (options: Options) => {
       return response.json();
     },
     {
-      enabled: !!searchWord,
+      enabled: !!trimmedSearchWord,
       getNextPageParam: (lastPage, pages) => {
         if (!lastPage.hasNextPage) {
           return undefined;
