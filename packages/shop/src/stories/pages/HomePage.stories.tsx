@@ -13,6 +13,12 @@ export default {
     controls: {
       hideNoControlsWarning: true,
     },
+    parameters: {
+      nextRouter: {
+        path: '/',
+        asPath: '/',
+      },
+    },
   },
   decorators: [reactQueryClientProviderDecorator()],
 } as Meta;

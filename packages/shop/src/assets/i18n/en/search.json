@@ -1,0 +1,9 @@
+{
+  "search": "Search",
+  "searchResult": "Search Results for \"{{searchWord}}\"",
+  "sponsoredProducts": "Sponsored Products",
+  "noResults": {
+    "title": "No search results for \"{{searchWord}}\".",
+    "message": "Please try with different keyword."
+  }
+}

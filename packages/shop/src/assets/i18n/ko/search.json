@@ -1,0 +1,9 @@
+{
+  "search": "검색",
+  "searchResult": "\"{{searchWord}}\" 검색 결과",
+  "sponsoredProducts": "스폰서 상품",
+  "noResults": {
+    "title": "\"{{searchWord}}\"에 대한 검색 결과가 없습니다.",
+    "message": "다른 검색어로 다시 시도해 보세요."
+  }
+}

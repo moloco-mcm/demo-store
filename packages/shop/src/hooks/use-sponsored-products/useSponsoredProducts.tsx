@@ -16,6 +16,8 @@ type Options = {
   categories?: string[];
   searchQuery?: string;
   enabled?: boolean;
+  cacheTime?: number;
+  staleTime?: number;
 };
 
 export const useSponsoredProducts = (options: Options) => {
@@ -27,6 +29,8 @@ export const useSponsoredProducts = (options: Options) => {
     categories,
     searchQuery,
     enabled,
+    cacheTime = 0,
+    staleTime,
   } = options;
 
   return useQuery<
@@ -71,8 +75,8 @@ export const useSponsoredProducts = (options: Options) => {
     {
       // disable auto re-fetching
       refetchOnWindowFocus: false,
-      // disable caching
-      cacheTime: 0,
+      cacheTime,
+      staleTime,
       enabled,
     }
   );
