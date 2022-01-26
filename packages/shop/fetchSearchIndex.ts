@@ -5,6 +5,12 @@ const storage = firebase.storage();
 const SEARCH_INDEX_FILENAME = 'search-index.json';
 
 async function start() {
+  const bucketName = process.env.GCS_BUCKET_NAME;
+
+  console.log(
+    `Start downloading search index from ${bucketName}:${SEARCH_INDEX_FILENAME}`
+  );
+
   await storage
     .bucket(process.env.GCS_BUCKET_NAME)
     .file(SEARCH_INDEX_FILENAME)
