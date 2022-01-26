@@ -51,6 +51,14 @@ const postHandler: NextApiHandler<SearchApiResponse> = async (req, res) => {
     return res.status(400).json(apiStandardError('BAD_REQUEST'));
   }
 
+  if (!searchIndex) {
+    return res.status(500).json(
+      apiStandardError('INTERNAL_SERVER_ERROR', {
+        message: 'Failed to access search index',
+      })
+    );
+  }
+
   const { pageIndex, searchWord } = body;
 
   const firestore = getFirebaseAdminApp().firestore();
