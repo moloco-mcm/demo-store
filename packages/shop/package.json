@@ -15,7 +15,7 @@
     "hooks:pre-commit": "lint-staged",
     "storybook": "start-storybook -p 8002 -s public",
     "build:storybook": "yarn build:deps && yarn link:deps && build-storybook -s public -o build-storybook",
-    "pre-build": "env-cmd -f .env.local ts-node ./fetchSearchIndex.ts"
+    "pre-build": "env-cmd -f .env.local --silent ts-node ./fetchSearchIndex.ts"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
