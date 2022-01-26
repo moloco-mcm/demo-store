@@ -37,9 +37,7 @@ const REQUEST_BODY_SCHEMA = yup.object().shape({
 
 const searchIndex = loadSearchIndex();
 
-export const isValidSearchRequestBody = (
-  data: any
-): data is SearchApiRequestBody =>
+const isValidSearchRequestBody = (data: any): data is SearchApiRequestBody =>
   REQUEST_BODY_SCHEMA.isValidSync(data, {
     strict: true,
     abortEarly: true,
