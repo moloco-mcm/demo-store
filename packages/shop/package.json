@@ -40,6 +40,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.0",
     "babel-jest": "^27.2.1",
+    "flexsearch": "0.7.21",
     "firebase": "9.0.1",
     "firebase-admin": "^9.11.1",
     "i18next": "^21.5.2",
@@ -68,6 +69,7 @@
     "@types/styled-components": "^5.1.9",
     "@types/ua-parser-js": "^0.7.36",
     "eslint-config-next": "11.1.2",
+    "@types/flexsearch": "0.7.2",
     "msw": "^0.36.5",
     "netlify-cli": "^6.12.6",
     "storybook-addon-next-router": "^3.1.1"
