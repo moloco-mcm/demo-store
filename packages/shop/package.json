@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "yarn build:deps && yarn link:deps && PORT=3001 next dev",
-    "build": "yarn build:deps && yarn link:deps && next build",
+    "build": "yarn pre-build && yarn build:deps && yarn link:deps && next build",
     "build:deps": "yarn workspace @rmp-demo-store/ui build",
     "link:deps": "cd ../ui/dist && yarn link && cd ../../shop && yarn link @rmp-demo-store/ui",
     "unlink:deps": "yarn unlink @rmp-demo-store/ui && cd ../ui/dist && yarn unlink",
@@ -14,7 +14,8 @@
     "lint": "next lint",
     "hooks:pre-commit": "lint-staged",
     "storybook": "start-storybook -p 8002 -s public",
-    "build:storybook": "yarn build:deps && yarn link:deps && build-storybook -s public -o build-storybook"
+    "build:storybook": "yarn build:deps && yarn link:deps && build-storybook -s public -o build-storybook",
+    "pre-build": "env-cmd -f .env.local ts-node ./fetchSearchIndex.ts"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [

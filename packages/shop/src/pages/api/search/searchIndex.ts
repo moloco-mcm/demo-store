@@ -12,9 +12,7 @@ export const loadSearchIndex = () => {
   var keys = Object.keys(serializedIndex);
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
-    // ref: https://github.com/nextapps-de/flexsearch/issues/290
-    const k = key.toString().split('.').pop() || '';
-    searchIndex.import(k, serializedIndex[key]);
+    searchIndex.import(key, serializedIndex[key]);
   }
   return searchIndex;
 };
