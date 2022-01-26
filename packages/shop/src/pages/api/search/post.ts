@@ -35,7 +35,7 @@ const REQUEST_BODY_SCHEMA = yup.object().shape({
   searchWord: yup.string().required(),
 });
 
-const searchIndex = loadSearchIndex();
+const searchIndexLoadTask = loadSearchIndex();
 
 const isValidSearchRequestBody = (data: any): data is SearchApiRequestBody =>
   REQUEST_BODY_SCHEMA.isValidSync(data, {
@@ -50,6 +50,8 @@ const postHandler: NextApiHandler<SearchApiResponse> = async (req, res) => {
   if (!isRequestBodyValid) {
     return res.status(400).json(apiStandardError('BAD_REQUEST'));
   }
+
+  const searchIndex = await searchIndexLoadTask;
 
   if (!searchIndex) {
     return res.status(500).json(

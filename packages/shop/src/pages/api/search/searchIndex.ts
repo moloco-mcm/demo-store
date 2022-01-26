@@ -1,11 +1,17 @@
-import { readFileSync } from 'fs';
 import { Index } from 'flexsearch';
+import { getFirebaseAdminApp } from '../../../common/firebase-admin';
 
-const SEARCH_INDEX_PATH = './search-index.json';
+const SEARCH_INDEX_PATH = 'search-index.json';
 
-export const loadSearchIndex = () => {
+export const loadSearchIndex = async () => {
   try {
-    const buffer = readFileSync(SEARCH_INDEX_PATH);
+    const firebase = getFirebaseAdminApp();
+    const storage = firebase.storage();
+    const [buffer] = await storage
+      .bucket(process.env.GCS_BUCKET_NAME)
+      .file(SEARCH_INDEX_PATH)
+      .download();
+
     const content = buffer.toString();
     const serializedIndex = JSON.parse(content);
 
