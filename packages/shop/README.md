@@ -28,6 +28,7 @@ The Seller Portal app uses Firebase to authenticate users. Create a Firebase pro
 - NEXT_PUBLIC_FIREBASE_API_KEY: API key for the Firebase project. You can obtain it from https://support.google.com/firebase/answer/701559.
 - NEXT_PUBLIC_FIREBASE_PROJECT_ID: Unique identifier for the Firebase/GCP project.
 - NEXT_PUBLIC_FIREBASE_APP_ID: Unique identifier for the Firebase app.
+- GCS_BUCKET_NAME: Name of Google Could Storage (GCS) bucket
 
 ### Sentry (Optional)
 

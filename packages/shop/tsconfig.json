@@ -27,5 +27,11 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "target": "es2020",
+      "module": "commonjs"
+    }
+  }
 }
