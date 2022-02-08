@@ -133,9 +133,11 @@ export const NavBar: React.FC<Props> = (props) => {
         </h1>
       )}
       {showSearchButton && (
-        <IconButton variant="ghost" colorScheme="gray">
-          <FontAwesomeIcon icon={faSearch} size="lg" fixedWidth />
-        </IconButton>
+        <Link href="/search" passHref>
+          <IconButton variant="ghost" colorScheme="gray">
+            <FontAwesomeIcon icon={faSearch} size="lg" fixedWidth />
+          </IconButton>
+        </Link>
       )}
       {showCartButton && (
         <div
