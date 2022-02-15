@@ -44,7 +44,20 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(404).end();
   }
 
-  const adAccountTitle = `Ad Account for ${session.user.email}`;
+  // load ad account's title
+  const adAccountDocSnapshot = await firestore
+    .collection('adAccounts')
+    .doc(adAccountId)
+    .get();
+  const adAccountData = adAccountDocSnapshot.data();
+
+  if (!adAccountDocSnapshot.exists || adAccountData === undefined) {
+    return res.status(404).end();
+  }
+
+  const adAccountTitle =
+    adAccountData.title || `Ad Account for ${session.user.email}`;
+
   const email = session.user.email;
   const externalUserId = session.user.id;
   const name = session.user.email;
