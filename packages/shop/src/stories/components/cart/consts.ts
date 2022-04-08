@@ -14,7 +14,7 @@ export const MOCK_ITEMS = [
       rating: 4.3,
       reviewCount: 9433,
       imageUrl:
-        'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1000_1080.png',
+        'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1000_1080.png',
     },
     quantity: 1,
   },
@@ -29,7 +29,7 @@ export const MOCK_ITEMS = [
       rating: 4.3,
       reviewCount: 2600,
       imageUrl:
-        'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1001_1080.png',
+        'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1001_1080.png',
     },
     quantity: 2,
   },
@@ -44,7 +44,7 @@ export const MOCK_ITEMS = [
       rating: 4.3,
       reviewCount: 9433,
       imageUrl:
-        'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1002_1080.png',
+        'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1002_1080.png',
     },
     quantity: 10000,
   },

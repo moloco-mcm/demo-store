@@ -28,7 +28,7 @@ const items: React.ComponentProps<typeof Carousel>['items'] = [
       rating: 4.3,
       reviewCount: 9433,
       imageUrl:
-        'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1000_1080.png',
+        'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1000_1080.png',
     },
   },
   {
@@ -42,7 +42,7 @@ const items: React.ComponentProps<typeof Carousel>['items'] = [
       rating: 4.3,
       reviewCount: 2600,
       imageUrl:
-        'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1001_1080.png',
+        'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1001_1080.png',
     },
   },
   {
@@ -56,7 +56,7 @@ const items: React.ComponentProps<typeof Carousel>['items'] = [
       rating: 4.3,
       reviewCount: 9433,
       imageUrl:
-        'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1002_1080.png',
+        'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1002_1080.png',
     },
   },
   {
@@ -70,7 +70,7 @@ const items: React.ComponentProps<typeof Carousel>['items'] = [
       rating: 4.3,
       reviewCount: 9433,
       imageUrl:
-        'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1003_1080.png',
+        'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1003_1080.png',
     },
   },
   {
@@ -84,7 +84,7 @@ const items: React.ComponentProps<typeof Carousel>['items'] = [
       rating: 4.3,
       reviewCount: 9433,
       imageUrl:
-        'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1004_1080.png',
+        'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1004_1080.png',
     },
   },
   {
@@ -98,7 +98,7 @@ const items: React.ComponentProps<typeof Carousel>['items'] = [
       rating: 4.3,
       reviewCount: 9433,
       imageUrl:
-        'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1005_1080.png',
+        'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1005_1080.png',
     },
   },
   {
@@ -112,7 +112,7 @@ const items: React.ComponentProps<typeof Carousel>['items'] = [
       rating: 4.3,
       reviewCount: 2600,
       imageUrl:
-        'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1006_1080.png',
+        'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1006_1080.png',
     },
   },
   {
@@ -126,7 +126,7 @@ const items: React.ComponentProps<typeof Carousel>['items'] = [
       rating: 4.3,
       reviewCount: 9433,
       imageUrl:
-        'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1007_1080.png',
+        'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1007_1080.png',
     },
   },
   {
@@ -140,7 +140,7 @@ const items: React.ComponentProps<typeof Carousel>['items'] = [
       rating: 4.3,
       reviewCount: 9433,
       imageUrl:
-        'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1008_1080.png',
+        'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1008_1080.png',
     },
   },
   {
@@ -154,7 +154,7 @@ const items: React.ComponentProps<typeof Carousel>['items'] = [
       rating: 4.3,
       reviewCount: 9433,
       imageUrl:
-        'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1009_1080.png',
+        'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1009_1080.png',
     },
   },
   {
@@ -168,7 +168,7 @@ const items: React.ComponentProps<typeof Carousel>['items'] = [
       rating: 4.3,
       reviewCount: 9433,
       imageUrl:
-        'https://storage.googleapis.com/rmp-cdn-prod/moloco-feed/images/w1080/1010_1080.png',
+        'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1010_1080.png',
     },
   },
 ];
