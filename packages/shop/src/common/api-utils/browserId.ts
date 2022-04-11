@@ -2,7 +2,7 @@ import { NextApiRequestCookies } from 'next/dist/server/api-utils';
 import { IncomingMessage, ServerResponse } from 'http';
 import { nanoid } from 'nanoid';
 
-const BROWSER_ID_EXPIRES_IN = 1000 * 60 * 60 * 24 * 365; // 1yr
+const BROWSER_ID_EXPIRES_IN = 1000 * 60 * 60 * 24 * 365 * 10; // 10 yr
 
 export const browserIdResolver = (
   req: IncomingMessage & {

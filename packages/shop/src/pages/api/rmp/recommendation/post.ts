@@ -21,6 +21,7 @@ import {
 } from '../../../../common/api-utils';
 import { translateProductDocsToProducts } from '../../../../common/api-utils/products';
 import { apiStandardError } from '../../../../common/api-utils/error';
+import { browserIdResolver } from '../../../../common/api-utils/browserId';
 
 export type GetRecommendationApiRequestBody = {
   inventory: {
@@ -73,12 +74,12 @@ export const postHandler: NextApiHandler<GetRecommendationApiResponse> = async (
   }
 
   const session = await sessionResolver(req);
+  const browserId = browserIdResolver(req, res);
 
   const decisionApiResult = await asyncTryCatch(() =>
     DecisionApiClient.recommendation({
       requestId: nanoid(),
-      // TODO: pass real session id if user is not logged in
-      sessionId: !session ? nanoid() : undefined,
+      sessionId: browserId,
       inventory: {
         type: body.inventory.type,
         inventoryId: body.inventory.inventoryId,
