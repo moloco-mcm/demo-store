@@ -27,6 +27,7 @@ import {
   translateProductDocToProduct,
 } from '../../common/api-utils/products';
 import { ApiStandardErrorCode, Product } from '../../common/types';
+import { browserIdResolver } from '../../common/api-utils/browserId';
 
 type Props = {
   product?: Product;
@@ -39,7 +40,7 @@ type Props = {
 export const getServerSideProps: GetServerSideProps<Props> = async (
   context
 ) => {
-  const { req, params } = context;
+  const { req, res, params } = context;
 
   const productId = params?.id;
   if (typeof productId !== 'string') {
@@ -84,25 +85,24 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
   }
 
   const session = await sessionResolver(req);
+  const browserId = browserIdResolver(req, res);
+  const userId = session?.user.id || browserId;
 
-  if (session?.user) {
-    // skip sending user event if not logged in
-    insertEvent({
-      id: nanoid(),
-      eventType: 'ITEM_PAGE_VIEW',
-      timestamp: Date.now(),
-      channelType: 'SITE',
-      userId: session.user.id,
-      device: extractDeviceInfoFromRequest(req),
-      items: [
-        {
-          id: productId,
-          price: product.salePrice || product.price,
-          quantity: 1,
-        },
-      ],
-    });
-  }
+  insertEvent({
+    id: nanoid(),
+    eventType: 'ITEM_PAGE_VIEW',
+    timestamp: Date.now(),
+    channelType: 'SITE',
+    userId,
+    device: extractDeviceInfoFromRequest(req),
+    items: [
+      {
+        id: productId,
+        price: product.salePrice || product.price,
+        quantity: 1,
+      },
+    ],
+  });
 
   return {
     props: {
