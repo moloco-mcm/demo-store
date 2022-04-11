@@ -25,6 +25,5 @@ export const browserIdResolver = (
     ).toUTCString()}; Path=/; Secure; HttpOnly`
   );
 
-  console.log('create browserId ', newBrowserId);
   return newBrowserId;
 };
