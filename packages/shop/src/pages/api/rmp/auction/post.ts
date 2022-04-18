@@ -21,6 +21,7 @@ import {
 } from '../../../../common/api-utils';
 import { translateProductDocsToProducts } from '../../../../common/api-utils/products';
 import { apiStandardError } from '../../../../common/api-utils/error';
+import { browserIdResolver } from '../../../../common/api-utils/browserId';
 
 export type GetSponsoredProductsApiRequestBody = {
   inventory: {
@@ -61,93 +62,92 @@ export const isValidGetRecommendationRequestBody = (
     abortEarly: true,
   });
 
-export const postHandler: NextApiHandler<
-  GetSponsoredProductsApiResponse
-> = async (req, res) => {
-  const { body } = req;
-  const isRequestBodyValid = isValidGetRecommendationRequestBody(body);
+export const postHandler: NextApiHandler<GetSponsoredProductsApiResponse> =
+  async (req, res) => {
+    const { body } = req;
+    const isRequestBodyValid = isValidGetRecommendationRequestBody(body);
 
-  if (!isRequestBodyValid) {
-    return res.status(400).json(apiStandardError('BAD_REQUEST'));
-  }
+    if (!isRequestBodyValid) {
+      return res.status(400).json(apiStandardError('BAD_REQUEST'));
+    }
 
-  const session = await sessionResolver(req);
+    const session = await sessionResolver(req);
+    const browserId = browserIdResolver(req, res);
 
-  const decisionApiResult = await asyncTryCatch(() =>
-    DecisionApiClient.auction({
-      requestId: nanoid(),
-      // TODO: pass real session id if user is not logged in
-      sessionId: !session ? nanoid() : undefined,
-      inventory: {
-        type: body.inventory.type,
-        inventoryId: body.inventory.inventoryId,
-        numItems: body.inventory.numItems,
-        items: body.inventory.items,
-        categories: body.inventory.categories,
-        searchQuery: body.inventory.searchQuery,
-      },
-      user: session?.user && {
-        userId: session.user.id,
-      },
-      device: extractDeviceInfoFromRequest(req),
-    })
-  );
-
-  if (isAsyncTryCatchError(decisionApiResult)) {
-    const [, error] = decisionApiResult;
-    return res.status(500).json(
-      apiStandardError('INTERNAL_SERVER_ERROR', {
-        message: error.message || 'Failed to fetch auction result',
+    const decisionApiResult = await asyncTryCatch(() =>
+      DecisionApiClient.auction({
+        requestId: nanoid(),
+        sessionId: browserId,
+        inventory: {
+          type: body.inventory.type,
+          inventoryId: body.inventory.inventoryId,
+          numItems: body.inventory.numItems,
+          items: body.inventory.items,
+          categories: body.inventory.categories,
+          searchQuery: body.inventory.searchQuery,
+        },
+        user: session?.user && {
+          userId: session.user.id,
+        },
+        device: extractDeviceInfoFromRequest(req),
       })
     );
-  }
 
-  const [response] = decisionApiResult;
+    if (isAsyncTryCatchError(decisionApiResult)) {
+      const [, error] = decisionApiResult;
+      return res.status(500).json(
+        apiStandardError('INTERNAL_SERVER_ERROR', {
+          message: error.message || 'Failed to fetch auction result',
+        })
+      );
+    }
 
-  // return early if no decided items
-  if (response.decidedItems.length === 0) {
-    return res.status(200).json({ items: [] });
-  }
+    const [response] = decisionApiResult;
 
-  // fetch products
-  const firestore = getFirebaseAdminApp().firestore();
+    // return early if no decided items
+    if (response.decidedItems.length === 0) {
+      return res.status(200).json({ items: [] });
+    }
 
-  const productDocRefs = response.decidedItems.map(({ itemId }) =>
-    firestore.collection('products').doc(itemId)
-  );
+    // fetch products
+    const firestore = getFirebaseAdminApp().firestore();
 
-  const productFetchResult = await asyncTryCatch(() =>
-    firestore.getAll(...productDocRefs)
-  );
-
-  if (isAsyncTryCatchError(productFetchResult)) {
-    return res.status(500).json(
-      apiStandardError('INTERNAL_SERVER_ERROR', {
-        message: 'Failed to fetch products',
-      })
+    const productDocRefs = response.decidedItems.map(({ itemId }) =>
+      firestore.collection('products').doc(itemId)
     );
-  }
 
-  const [productDocSnapshots] = productFetchResult;
+    const productFetchResult = await asyncTryCatch(() =>
+      firestore.getAll(...productDocRefs)
+    );
 
-  const products = translateProductDocsToProducts(productDocSnapshots);
+    if (isAsyncTryCatchError(productFetchResult)) {
+      return res.status(500).json(
+        apiStandardError('INTERNAL_SERVER_ERROR', {
+          message: 'Failed to fetch products',
+        })
+      );
+    }
 
-  // build response
-  const productIdToDecidedItemsMap = keyBy(
-    response.decidedItems,
-    (decidedItem) => decidedItem.itemId
-  );
+    const [productDocSnapshots] = productFetchResult;
 
-  const items = products.map((product) => {
-    const decidedItem = productIdToDecidedItemsMap[product.id];
-    return {
-      product: product,
-      impTrackers: decidedItem.impTrackers,
-      clickTrackers: decidedItem.clickTrackers,
-    };
-  });
+    const products = translateProductDocsToProducts(productDocSnapshots);
 
-  return res.status(200).json({ items });
-};
+    // build response
+    const productIdToDecidedItemsMap = keyBy(
+      response.decidedItems,
+      (decidedItem) => decidedItem.itemId
+    );
+
+    const items = products.map((product) => {
+      const decidedItem = productIdToDecidedItemsMap[product.id];
+      return {
+        product: product,
+        impTrackers: decidedItem.impTrackers,
+        clickTrackers: decidedItem.clickTrackers,
+      };
+    });
+
+    return res.status(200).json({ items });
+  };
 
 export default postHandler;
