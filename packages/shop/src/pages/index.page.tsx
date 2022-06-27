@@ -21,11 +21,11 @@ const Home: NextPage<{}> = () => {
           title={t('recommended')}
           numOfRows={2}
           numOfItems={30}
-          inventoryId="HOME"
+          inventoryId="home_recommendation"
         />
         <SponsoredProducts
           title={t('sponsored')}
-          inventoryId="HOME"
+          inventoryId="home_auction"
           numOfItems={3}
         />
       </AppLayout>

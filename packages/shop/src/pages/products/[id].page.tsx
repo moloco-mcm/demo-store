@@ -162,13 +162,13 @@ const ProductDetailPage: NextPage<Props> = (props) => {
             />
             <RecommendedProducts
               title={t('productDetail:recommended')}
-              inventoryId="PRODUCT_DETAIL"
+              inventoryId="product_detail_recommendation"
               items={product && [product?.id]}
               enabled={!!product}
             />
             <SponsoredProducts
               title={t('productDetail:sponsored')}
-              inventoryId="PRODUCT_DETAIL"
+              inventoryId="product_detail_auction"
               items={product && [product?.id]}
               numOfItems={2}
               enabled={!!product}
