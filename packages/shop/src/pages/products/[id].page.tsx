@@ -163,14 +163,12 @@ const ProductDetailPage: NextPage<Props> = (props) => {
             <RecommendedProducts
               title={t('productDetail:recommended')}
               inventoryId="PRODUCT_DETAIL"
-              inventoryType="PRODUCT_DETAIL"
               items={product && [product?.id]}
               enabled={!!product}
             />
             <SponsoredProducts
               title={t('productDetail:sponsored')}
               inventoryId="PRODUCT_DETAIL"
-              inventoryType="PRODUCT_DETAIL"
               items={product && [product?.id]}
               numOfItems={2}
               enabled={!!product}

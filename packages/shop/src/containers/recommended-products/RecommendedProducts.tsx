@@ -10,7 +10,6 @@ type Props = {
   title?: string;
   numOfItems?: number;
   numOfRows?: number;
-  inventoryType: string;
   inventoryId: string;
   items?: string[];
   enabled?: boolean;
@@ -22,7 +21,6 @@ export const RecommendedProducts = (props: Props) => {
     title,
     numOfItems = 30,
     numOfRows = 1,
-    inventoryType,
     inventoryId,
     items,
     enabled,
@@ -32,7 +30,6 @@ export const RecommendedProducts = (props: Props) => {
 
   const { isLoading, data, isError } = useRecommendedProducts({
     inventoryId,
-    inventoryType,
     numOfItems,
     items,
     enabled,

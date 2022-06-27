@@ -25,7 +25,6 @@ import { browserIdResolver } from '../../../../common/api-utils/browserId';
 
 export type GetRecommendationApiRequestBody = {
   inventory: {
-    type: string;
     inventoryId: string;
     numItems: number;
     items?: string[];
@@ -45,7 +44,6 @@ export type GetRecommendationApiResponse = ApiResponse<ResponseBody>;
 
 const REQUEST_BODY_SCHEMA = yup.object().shape({
   inventory: yup.object().shape({
-    type: yup.string().required(),
     inventoryId: yup.string().required(),
     numItems: yup.number().required().positive().integer(),
     items: yup.array().of(yup.string().required()),
@@ -81,7 +79,6 @@ export const postHandler: NextApiHandler<GetRecommendationApiResponse> = async (
       requestId: nanoid(),
       sessionId: browserId,
       inventory: {
-        type: body.inventory.type,
         inventoryId: body.inventory.inventoryId,
         numItems: body.inventory.numItems,
         items: body.inventory.items,

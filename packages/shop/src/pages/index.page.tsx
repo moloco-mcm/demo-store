@@ -22,12 +22,10 @@ const Home: NextPage<{}> = () => {
           numOfRows={2}
           numOfItems={30}
           inventoryId="HOME"
-          inventoryType="HOME"
         />
         <SponsoredProducts
           title={t('sponsored')}
           inventoryId="HOME"
-          inventoryType="HOME"
           numOfItems={3}
         />
       </AppLayout>

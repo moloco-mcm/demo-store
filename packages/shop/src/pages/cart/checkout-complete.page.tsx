@@ -35,7 +35,6 @@ const CheckoutCompletePage: NextPage<{}> = () => {
           <RecommendedProducts
             title={t('recommended')}
             inventoryId="PURCHASE_COMPLETE"
-            inventoryType="PURCHASE_COMPLETE"
             items={productIds}
             enabled={!!productIds}
           />
