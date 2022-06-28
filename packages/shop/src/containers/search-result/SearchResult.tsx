@@ -34,8 +34,7 @@ export const SearchResult: React.FC<Props> = (props) => {
     data: adsData,
     isError: isAdsError,
   } = useSponsoredProducts({
-    inventoryId: 'SEARCH',
-    inventoryType: 'SEARCH',
+    inventoryId: 'search_auction',
     numOfItems: 10,
     searchQuery: searchWord,
     cacheTime: CACHE_TIME,

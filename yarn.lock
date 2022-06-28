@@ -2546,17 +2546,17 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@moloco-rmp/decision-api-client@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@moloco-rmp/decision-api-client/-/decision-api-client-1.0.0.tgz#3b2fc76f03f4aff7bbc1bd2da4bd698cd72892e4"
-  integrity sha512-scz2S8tYT/9ZeIncbHwIkzBQ7EusH/vznYPqn9uxxrRzXuZBMlW556+6uqJYohlRhOtshvDLQOJWBB9/3CztXg==
+"@moloco-rmp/decision-api-client@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@moloco-rmp/decision-api-client/-/decision-api-client-1.1.0.tgz#5fc0de90cc4b9f16d49c4ff3fd6cc753deb03f3a"
+  integrity sha512-AXtY1Bn5oa9ZwrFqimvBG91xf7m55Si9BuhXSec/vJqG+G5s325oZH/Dzevhzi/p8rzK2gTfVRIb7D8cLdVo0A==
   dependencies:
     axios "^0.24.0"
 
-"@moloco-rmp/event-api-client@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@moloco-rmp/event-api-client/-/event-api-client-1.0.0.tgz#027b12e502469bae4838edfcab4809d808e55ad7"
-  integrity sha512-YQVngleEKIGFbo6BSPa1+uig11sGXMrxMXGde36ccsmf3n3e95oG6LujUugdDXQpeR88Mji6wKOCb9ZkCsOWIw==
+"@moloco-rmp/event-api-client@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@moloco-rmp/event-api-client/-/event-api-client-1.0.1.tgz#e912812619f556887423b37b327ea8615395ad35"
+  integrity sha512-TcEGcAEzysTukGadG2uV7OOyyv8zOwthbp7smChcLcv5lsy/fi/CMIB3Gm/oIsJs1Gqlr9roVS9wD3wkWgHX6g==
   dependencies:
     axios "0.24.0"
 

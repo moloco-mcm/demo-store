@@ -20,7 +20,6 @@ type Props = {
   className?: string;
   title?: string;
   numOfItems?: number;
-  inventoryType: string;
   inventoryId: string;
   items?: string[];
   enabled?: boolean;
@@ -34,7 +33,6 @@ export const SponsoredProducts = (props: Props) => {
     className,
     title,
     numOfItems = 1,
-    inventoryType,
     inventoryId,
     items,
     enabled = true,
@@ -45,7 +43,6 @@ export const SponsoredProducts = (props: Props) => {
 
   const { isLoading, data, isError } = useSponsoredAds({
     inventoryId,
-    inventoryType,
     numOfItems: 10,
     items,
     enabled,

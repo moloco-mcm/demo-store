@@ -10,7 +10,6 @@ const QUERY_KEY = 'auction';
 
 type Options = {
   numOfItems: number;
-  inventoryType: string;
   inventoryId: string;
   items?: string[];
   categories?: string[];
@@ -22,7 +21,6 @@ type Options = {
 
 export const useSponsoredProducts = (options: Options) => {
   const {
-    inventoryType,
     inventoryId,
     numOfItems,
     items,
@@ -37,19 +35,10 @@ export const useSponsoredProducts = (options: Options) => {
     GetSponsoredProductsApiSuccessResponse,
     GetSponsoredProductsApiErrorResponse
   >(
-    [
-      QUERY_KEY,
-      inventoryType,
-      inventoryId,
-      numOfItems,
-      items,
-      categories,
-      searchQuery,
-    ],
+    [QUERY_KEY, inventoryId, numOfItems, items, categories, searchQuery],
     async () => {
       const body: GetSponsoredProductsApiRequestBody = {
         inventory: {
-          type: inventoryType,
           inventoryId: inventoryId,
           numItems: numOfItems,
           items,

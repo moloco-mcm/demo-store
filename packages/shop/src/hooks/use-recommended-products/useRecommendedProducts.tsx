@@ -10,7 +10,6 @@ const QUERY_KEY = 'recommendation';
 
 type Options = {
   numOfItems: number;
-  inventoryType: string;
   inventoryId: string;
   items?: string[];
   categories?: string[];
@@ -19,33 +18,17 @@ type Options = {
 };
 
 export const useRecommendedProducts = (options: Options) => {
-  const {
-    inventoryType,
-    inventoryId,
-    numOfItems,
-    items,
-    categories,
-    searchQuery,
-    enabled,
-  } = options;
+  const { inventoryId, numOfItems, items, categories, searchQuery, enabled } =
+    options;
 
   return useQuery<
     GetRecommendationApiSuccessResponse,
     GetRecommendationApiErrorResponse
   >(
-    [
-      QUERY_KEY,
-      inventoryType,
-      inventoryId,
-      numOfItems,
-      items,
-      categories,
-      searchQuery,
-    ],
+    [QUERY_KEY, inventoryId, numOfItems, items, categories, searchQuery],
     async () => {
       const body: GetRecommendationApiRequestBody = {
         inventory: {
-          type: inventoryType,
           inventoryId: inventoryId,
           numItems: numOfItems,
           items,
