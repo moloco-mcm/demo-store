@@ -7,6 +7,8 @@ import { useTranslation } from 'react-i18next';
 import RecommendedProducts from '../containers/recommended-products';
 import AppLayout from '../containers/app-layout';
 import SponsoredProducts from '../containers/sponsored-products';
+import BannerAd from '../containers/banner-ad';
+import { space } from '@rmp-demo-store/ui/theme-utils';
 
 const Home: NextPage<{}> = () => {
   const { t } = useTranslation('home');
@@ -17,6 +19,14 @@ const Home: NextPage<{}> = () => {
         <title>Demo Store</title>
       </Head>
       <AppLayout showBrand showSearchButton showCartButton showTabBar>
+        <BannerAd
+          inventoryId="10001"
+          width={640}
+          height={150}
+          css={`
+            margin-bottom: ${space(3)};
+          `}
+        />
         <RecommendedProducts
           title={t('recommended')}
           numOfRows={2}
