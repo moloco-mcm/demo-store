@@ -4,7 +4,7 @@ import {
   CreativeAuctionHttpResponseBody,
 } from '@moloco-rmp/decision-api-client/dist/types/v1/creative-auction/types';
 
-const MOCK_EVENT_TRACKING_URL = `http://mock-evtsvc-url/__mock__`;
+const MOCK_EVENT_TRACKING_URL = `https://mock-evtsvc-url/__mock__`;
 const RMP_CREATIVE_AUCTION_API_URL = `${process.env.RMP_DECISION_API_URL}/rmp/decision/v1/platforms/:platformId/creative-auction`;
 
 const mockTrackingUrl = (args: {
