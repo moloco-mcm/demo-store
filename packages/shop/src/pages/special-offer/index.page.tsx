@@ -6,7 +6,7 @@ import 'styled-components/macro';
 import { useTranslation } from 'react-i18next';
 
 import Stack from '@rmp-demo-store/ui/stack';
-import { fontWeight, space } from '@rmp-demo-store/ui/theme-utils';
+import { fontSize, fontWeight, space } from '@rmp-demo-store/ui/theme-utils';
 import ErrorDisplay from '@rmp-demo-store/ui/error-display';
 
 import {
@@ -15,14 +15,19 @@ import {
 } from '../../common/api-utils/creativeAuctionLog';
 import { translateProductDocsToProducts } from '../../common/api-utils/products';
 import { getFirebaseAdminApp } from '../../common/firebase-admin';
-import { ApiStandardErrorCode, DecidedItem } from '../../common/types';
+import { ApiStandardErrorCode, DecidedItem, Seller } from '../../common/types';
 import { asyncTryCatch, isAsyncTryCatchError } from '../../common/utils';
 import { AppLayout } from '../../containers/app-layout';
 import SingleProduct from '../../components/product/single';
 import { ProductDisplayItem } from '../../components/product/types';
 import { fireTrackingEvents } from '../../common/utils/tracker';
+import {
+  fetchSellerDocSnapshot,
+  translateSellerDocToSeller,
+} from '../../common/api-utils/seller';
 
 type Props = {
+  seller?: Seller;
   decidedItems?: DecidedItem[];
   error?: {
     code: ApiStandardErrorCode;
@@ -117,15 +122,37 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     };
   });
 
+  // fetch seller information based on the first item
+  const sellerId = decidedItems[0].product.adAccountId;
+
+  const sellerFetchResult = await asyncTryCatch(() =>
+    fetchSellerDocSnapshot(sellerId)
+  );
+
+  if (isAsyncTryCatchError(sellerFetchResult)) {
+    return {
+      props: {
+        error: {
+          code: 'INTERNAL_SERVER_ERROR',
+          message: 'Failed to fetch seller information',
+        },
+      },
+    };
+  }
+
+  const [sellerDocSnapshot] = sellerFetchResult;
+  const seller = translateSellerDocToSeller(sellerDocSnapshot);
+
   return {
     props: {
+      seller,
       decidedItems,
     },
   };
 };
 
 const SpecialOfferPage: NextPage<Props> = (props) => {
-  const { decidedItems, error } = props;
+  const { seller, decidedItems, error } = props;
 
   const router = useRouter();
   const { t } = useTranslation();
@@ -170,13 +197,20 @@ const SpecialOfferPage: NextPage<Props> = (props) => {
                 padding: ${space(2)} ${space(3)};
               `}
             >
-              {/* TODO: show seller name */}
-              <h3
+              <h1
                 css={`
+                  font-size: ${fontSize('lg')};
                   font-weight: ${fontWeight('bold')};
                 `}
               >
-                Special Offer
+                {seller?.name}
+              </h1>
+              <h3
+                css={`
+                  font-size: ${fontSize('sm')};
+                `}
+              >
+                Special offer
               </h3>
             </div>
             <Stack
