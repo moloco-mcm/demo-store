@@ -7,5 +7,4 @@ export type CreativeAuctionLog = {
       clickTrackers: string[];
     }[];
   };
-  expireAt: Date;
 };

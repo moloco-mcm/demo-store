@@ -19,7 +19,6 @@ const CREATIVE_AUCTION_LOG_DOC_SCHEMA = yup.object().shape({
       ),
     })
     .required(),
-  expireAt: yup.date().required(),
 });
 
 export const fetchCreativeAuctionLogDocSnapshot = (requestId: string) =>
