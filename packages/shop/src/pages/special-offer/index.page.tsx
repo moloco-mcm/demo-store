@@ -175,7 +175,7 @@ const SpecialOfferPage: NextPage<Props> = (props) => {
         <title>{t('specialOffer:title')}</title>
       </Head>
       <AppLayout
-        title={t('specialOffer:title')}
+        title="" // empty title
         showHomeButton
         showBackButton
         showCartButton
