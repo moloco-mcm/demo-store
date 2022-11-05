@@ -15,6 +15,7 @@ export const MOCK_ITEMS = [
       reviewCount: 9433,
       imageUrl:
         'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1000_1080.png',
+      adAccountId: '10000',
     },
     quantity: 1,
   },
@@ -30,6 +31,7 @@ export const MOCK_ITEMS = [
       reviewCount: 2600,
       imageUrl:
         'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1001_1080.png',
+      adAccountId: '10000',
     },
     quantity: 2,
   },
@@ -45,6 +47,7 @@ export const MOCK_ITEMS = [
       reviewCount: 9433,
       imageUrl:
         'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1002_1080.png',
+      adAccountId: '10000',
     },
     quantity: 10000,
   },
