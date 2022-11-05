@@ -1,4 +1,8 @@
+let isServerStarted = false;
+
 async function initMocks() {
+  if (isServerStarted) return;
+
   if (typeof window === 'undefined') {
     const { server } = await import('./server');
     server.listen();
@@ -6,6 +10,8 @@ async function initMocks() {
     const { worker } = await import('./browser');
     worker.start();
   }
+
+  isServerStarted = true;
 }
 
 initMocks();
