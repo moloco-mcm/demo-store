@@ -26,7 +26,6 @@ const CREATIVE_AUCTION_LOG_RETENTION_PERIOD = 3 * 24 * 60 * 60 * 1000; // 3 days
 export type GetBannerAdApiRequestBody = {
   inventory: {
     inventoryId: string;
-    numItems: number;
     items?: string[];
     categories?: string[];
     searchQuery?: string;
