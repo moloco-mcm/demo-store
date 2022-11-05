@@ -108,7 +108,7 @@ export const NavBar: React.FC<Props> = (props) => {
           Demo Store
         </div>
       )}
-      {title && (
+      {title !== undefined ? (
         <h1
           css={`
             line-height: ${space(10)};
@@ -131,7 +131,7 @@ export const NavBar: React.FC<Props> = (props) => {
         >
           {title}
         </h1>
-      )}
+      ) : null}
       {showSearchButton && (
         <Link href="/search" passHref>
           <IconButton variant="ghost" colorScheme="gray">

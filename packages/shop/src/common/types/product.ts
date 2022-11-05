@@ -13,4 +13,5 @@ export type Product = {
   reviewCount?: number;
   imageUrl: string;
   description?: string;
+  adAccountId: string;
 };
