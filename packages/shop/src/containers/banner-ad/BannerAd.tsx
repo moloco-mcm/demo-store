@@ -36,8 +36,7 @@ export const BannerAd = (props: Props) => {
       fireTrackingEvents(clickTrackers);
     }
 
-    // TODO: enable navigation
-    // router.push(`/special-offer?requestId=${bannerAd.requestId}`);
+    router.push(`/special-offer?requestId=${bannerAd.requestId}`);
   };
 
   const handleBannerVisible = () => {
