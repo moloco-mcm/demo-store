@@ -42,7 +42,7 @@ export const handlers = [
           banner: {
             creative_id: 'TEST_CREATIVE_ID',
             image_url:
-              'https://rmp-cdn.moloco.com/moloco-feed/images/w1080/1000_1080.png',
+              'https://storage.googleapis.com/rmp-cdn-test/demo-store-images/banner_640x150_03.png',
             imp_trackers: [mockTrackingUrl({ type: 'imp', creativeId })],
             click_trackers: [mockTrackingUrl({ type: 'click', creativeId })],
           },
