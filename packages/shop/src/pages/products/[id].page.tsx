@@ -28,6 +28,7 @@ import {
 } from '../../common/api-utils/products';
 import { ApiStandardErrorCode, Product } from '../../common/types';
 import { browserIdResolver } from '../../common/api-utils/browserId';
+import BannerAd from '../../containers/banner-ad';
 
 type Props = {
   product?: Product;
@@ -165,6 +166,14 @@ const ProductDetailPage: NextPage<Props> = (props) => {
               inventoryId="product_detail_recommendation"
               items={product && [product?.id]}
               enabled={!!product}
+            />
+            <BannerAd
+              inventoryId="10003"
+              width={640}
+              height={150}
+              css={`
+                margin: ${space(3)} 0;
+              `}
             />
             <SponsoredProducts
               title={t('productDetail:sponsored')}

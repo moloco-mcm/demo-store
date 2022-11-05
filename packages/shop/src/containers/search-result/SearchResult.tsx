@@ -16,6 +16,7 @@ import Carousel from '../../components/product/carousel';
 import { fireTrackingEvents } from '../../common/utils/tracker';
 import { DecidedItem } from '../../common/types';
 import { SectionTitle } from './StyledComponents';
+import BannerAd from '../banner-ad';
 
 type Props = {
   searchWord: string;
@@ -120,6 +121,15 @@ export const SearchResult: React.FC<Props> = (props) => {
       <section>
         {hasSearchResult ? (
           <>
+            <BannerAd
+              inventoryId="10002"
+              width={640}
+              height={150}
+              searchQuery={searchWord}
+              css={`
+                margin: ${space(3)} 0;
+              `}
+            />
             <SectionTitle>
               {searchT('searchResult', { searchWord })}
             </SectionTitle>
