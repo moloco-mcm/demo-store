@@ -41,7 +41,6 @@ export const BannerAd = (props: Props) => {
   };
 
   const handleBannerVisible = () => {
-    console.log('handleBannerVisible', { bannerAd });
     if (!bannerAd) return;
     const { impTrackers } = bannerAd;
     if (impTrackers) {
