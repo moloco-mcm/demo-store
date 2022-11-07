@@ -3,9 +3,6 @@ import { withSentry } from '@sentry/nextjs';
 
 import postHandler from './post';
 
-// use mock server
-import '../../../../mocks';
-
 const handler: NextApiHandler = async (req, res) => {
   const { method } = req;
   switch (method) {

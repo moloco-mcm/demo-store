@@ -17,8 +17,6 @@ import GlobalStyle from '@rmp-demo-store/ui/global-style';
 import CSSReset from '@rmp-demo-store/ui/css-reset';
 
 import '../common/i18n';
-// TODO: disable mock
-import '../mocks';
 
 if (process.env.NODE_ENV !== 'development') {
   // send react-query logs to sentry
