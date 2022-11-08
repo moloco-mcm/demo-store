@@ -50,7 +50,7 @@ export const SingleProduct = <T extends ProductDisplayItem>(
             `}
           >
             <>
-              <ProductItem.Image src={item?.product.imageUrl} />
+              <ProductItem.Image src={item?.product.thumbnailUrl} />
             </>
           </SkeletonLoader>
         </ProductItem.ImageContainer>
