@@ -87,7 +87,7 @@ export const Carousel = <T extends ProductDisplayItem>(props: Props<T>) => {
               <ProductItem.Container>
                 <ProductItem.ImageContainer>
                   <ProductItem.Image
-                    src={item.product.imageUrl}
+                    src={item.product.thumbnailUrl}
                     alt="Picture of the product"
                     draggable={false}
                   />

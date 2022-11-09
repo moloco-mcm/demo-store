@@ -52,7 +52,10 @@ export const CartItem = (props: Props) => {
             `}
           >
             <>
-              <Item.Image src={item?.product.imageUrl} alt="Product Image" />
+              <Item.Image
+                src={item?.product.thumbnailUrl}
+                alt="Product Image"
+              />
             </>
           </SkeletonLoader>
         </Item.ImageContainer>

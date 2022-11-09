@@ -12,6 +12,7 @@ export type Product = {
   rating?: number;
   reviewCount?: number;
   imageUrl: string;
+  thumbnailUrl: string;
   description?: string;
   adAccountId: string;
 };

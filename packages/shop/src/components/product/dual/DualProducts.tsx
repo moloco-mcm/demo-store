@@ -36,7 +36,7 @@ export const DualProducts = <T extends ProductDisplayItem>(props: Props<T>) => {
             {isLoading ? (
               <ProductItem.ImageSkeleton />
             ) : (
-              <ProductItem.Image src={item?.product.imageUrl} />
+              <ProductItem.Image src={item?.product.thumbnailUrl} />
             )}
           </ProductItem.ImageContainer>
           <ProductItem.InfoContainer>

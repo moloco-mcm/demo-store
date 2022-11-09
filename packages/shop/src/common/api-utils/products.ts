@@ -25,6 +25,7 @@ const PRODUCT_DOC_SCHEMA = yup
     reviewCount: yup.number(),
     ratingScore: yup.number(),
     imageLink: yup.string().required(),
+    thumbnailLink: yup.string().required(),
     adAccountId: yup.string().required(), // TODO: rename into "sellerId"
   })
   .required();
@@ -56,6 +57,7 @@ export const translateProductDocToProduct = (
     price: data.price,
     salePrice: data.salePrice,
     imageUrl: data.imageLink,
+    thumbnailUrl: data.thumbnailLink,
     reviewCount: data.reviewCount,
     rating: data.ratingScore,
     adAccountId: data.adAccountId,
