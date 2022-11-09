@@ -171,6 +171,7 @@ const ProductDetailPage: NextPage<Props> = (props) => {
               inventoryId="10003"
               width={640}
               height={150}
+              items={product && [product?.id]}
               css={`
                 margin: ${space(3)} 0;
               `}
