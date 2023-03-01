@@ -17,6 +17,8 @@ import GlobalStyle from '@rmp-demo-store/ui/global-style';
 import CSSReset from '@rmp-demo-store/ui/css-reset';
 
 import '../common/i18n';
+import { GTM_ID } from '../common/gtm';
+import { GoogleTagManager } from '../components/common/google-tag-manager';
 
 if (process.env.NODE_ENV !== 'development') {
   // send react-query logs to sentry
@@ -42,15 +44,18 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <ThemeProvider theme={theme}>
-          <CSSReset />
-          <GlobalStyle baseFontSize={16} />
-          <Component {...pageProps} />
-        </ThemeProvider>
-      </Hydrate>
-    </QueryClientProvider>
+    <>
+      {GTM_ID ? <GoogleTagManager gtmId={GTM_ID} /> : null}
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <ThemeProvider theme={theme}>
+            <CSSReset />
+            <GlobalStyle baseFontSize={16} />
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </Hydrate>
+      </QueryClientProvider>
+    </>
   );
 }
 export default MyApp;

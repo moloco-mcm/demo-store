@@ -7,11 +7,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (method !== 'POST') return res.status(404).end();
 
-  // delete cookie
-  res.setHeader(
-    'Set-Cookie',
-    `session=deleted; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/;`
-  );
+  // delete cookies
+  res.setHeader('Set-Cookie', [
+    `session=deleted; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/;`,
+    `userId=deleted; Expires=Thu, 01 Jan 1970 00:00:00 GMT; Path=/;`,
+  ]);
 
   res.status(200).end();
 };

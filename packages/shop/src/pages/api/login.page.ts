@@ -28,16 +28,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const expiresIn = SESSION_EXPIRES_IN;
-    const sessionCookie = await getFirebaseAdminApp()
-      .auth()
-      .createSessionCookie(idToken, { expiresIn });
+    const auth = getFirebaseAdminApp().auth();
+    const { uid } = await auth.verifyIdToken(idToken);
 
-    res.setHeader(
-      'Set-Cookie',
-      `session=${sessionCookie}; Expires=${new Date(
-        Date.now() + expiresIn
-      ).toUTCString()}; Path=/; Secure; HttpOnly`
-    );
+    const sessionCookie = await auth.createSessionCookie(idToken, {
+      expiresIn,
+    });
+
+    const expires = new Date(Date.now() + expiresIn).toUTCString();
+
+    res.setHeader('Set-Cookie', [
+      `session=${sessionCookie}; Expires=${expires}; Path=/; Secure; HttpOnly`,
+      `userId=${uid}; Expires=${expires}; Path=/; Secure;`, // not use HttpOnly, so client side javascript can access
+    ]);
 
     res.status(200).end();
   } catch (error) {
