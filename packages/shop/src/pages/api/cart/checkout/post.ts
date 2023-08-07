@@ -1,7 +1,7 @@
 import type { NextApiHandler } from 'next';
 import { nanoid } from 'nanoid';
 
-import { insertEvent } from '../../../../common/user-api-client';
+import { track } from '../../../../common/user-event-tracker';
 import { asyncTryCatch, isAsyncTryCatchError } from '../../../../common/utils';
 import { getFirebaseAdminApp } from '../../../../common/firebase-admin';
 import {
@@ -103,24 +103,23 @@ export const postHandler: NextApiHandler<CheckoutApiResponse> = async (
   }
 
   // send user event
-  insertEvent({
-    id: nanoid(),
-    eventType: 'PURCHASE',
-    timestamp: Date.now(),
-    channelType: 'SITE',
-    userId,
-    device: extractDeviceInfoFromRequest(req),
-    items: items.map((item) => ({
-      id: item.product.id,
-      price: item.product.salePrice || item.product.price,
-      quantity: item.quantity,
-    })),
-    revenue: {
-      currency: items[0]?.product.price.currency,
-      amount: items.reduce((acc, currentItem) => {
-        return acc + currentItem.product.price.amount;
-      }, 0),
+  track({
+    event: {
+      eventType: 'PURCHASE',
+      items: items.map((item) => ({
+        id: item.product.id,
+        price: item.product.salePrice || item.product.price,
+        quantity: item.quantity,
+      })),
+      revenue: {
+        currency: items[0]?.product.price.currency,
+        amount: items.reduce((acc, currentItem) => {
+          return acc + currentItem.product.price.amount;
+        }, 0),
+      },
     },
+    req,
+    res,
   });
 
   // empty cart

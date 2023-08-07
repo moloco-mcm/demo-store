@@ -25,6 +25,12 @@ import {
   fetchSellerDocSnapshot,
   translateSellerDocToSeller,
 } from '../../common/api-utils/seller';
+import { track } from '../../common/user-event-tracker';
+import {
+  extractDeviceInfoFromRequest,
+  sessionResolver,
+} from '../../common/api-utils';
+import { browserIdResolver } from '../../common/api-utils/browserId';
 
 type Props = {
   seller?: Seller;
@@ -38,7 +44,7 @@ type Props = {
 export const getServerSideProps: GetServerSideProps<Props> = async (
   context
 ) => {
-  const { query } = context;
+  const { query, req, res } = context;
 
   const requestId = query?.requestId;
   if (typeof requestId !== 'string') {
@@ -142,6 +148,15 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
 
   const [sellerDocSnapshot] = sellerFetchResult;
   const seller = translateSellerDocToSeller(sellerDocSnapshot);
+
+  track({
+    event: {
+      eventType: 'PAGE_VIEW',
+      pageId: 'SPECIAL_OFFER',
+    },
+    req,
+    res,
+  });
 
   return {
     props: {

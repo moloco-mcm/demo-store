@@ -16,6 +16,12 @@ import { Product } from '../../../common/types/product';
 import { getFirebaseAdminApp } from '../../../common/firebase-admin';
 import { translateProductDocsToProducts } from '../../../common/api-utils/products';
 import { loadSearchIndex } from './searchIndex';
+import {
+  extractDeviceInfoFromRequest,
+  sessionResolver,
+} from '../../../common/api-utils';
+import { browserIdResolver } from '../../../common/api-utils/browserId';
+import { track } from '../../../common/user-event-tracker';
 
 export type SearchApiRequestBody = {
   searchWord: string;
@@ -95,6 +101,16 @@ const postHandler: NextApiHandler<SearchApiResponse> = async (req, res) => {
   const [productDocSnapshots] = productFetchResult;
 
   const products = translateProductDocsToProducts(productDocSnapshots);
+
+  track({
+    event: {
+      eventType: 'SEARCH',
+      pageId: 'SPECIAL_OFFER',
+      searchQuery: searchWord,
+    },
+    req,
+    res,
+  });
 
   return res.status(200).json({
     products: products,

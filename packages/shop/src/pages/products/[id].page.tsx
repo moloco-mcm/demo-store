@@ -5,7 +5,6 @@ import 'styled-components/macro';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/router';
 import 'styled-components/macro';
-import { nanoid } from 'nanoid';
 import pickBy from 'lodash/pickBy';
 
 import ErrorDisplay from '@rmp-demo-store/ui/error-display';
@@ -16,7 +15,7 @@ import { useAddCartItemMutation } from '../../hooks/use-cart';
 import AppLayout from '../../containers/app-layout';
 import RecommendedProducts from '../../containers/recommended-products';
 import SponsoredProducts from '../../containers/sponsored-products';
-import { insertEvent } from '../../common/user-api-client';
+import { track } from '../../common/user-event-tracker';
 import {
   extractDeviceInfoFromRequest,
   sessionResolver,
@@ -85,24 +84,19 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     };
   }
 
-  const session = await sessionResolver(req);
-  const browserId = browserIdResolver(req, res);
-  const userId = session?.user.id || browserId;
-
-  insertEvent({
-    id: nanoid(),
-    eventType: 'ITEM_PAGE_VIEW',
-    timestamp: Date.now(),
-    channelType: 'SITE',
-    userId,
-    device: extractDeviceInfoFromRequest(req),
-    items: [
-      {
-        id: productId,
-        price: product.salePrice || product.price,
-        quantity: 1,
-      },
-    ],
+  track({
+    event: {
+      eventType: 'ITEM_PAGE_VIEW',
+      items: [
+        {
+          id: productId,
+          price: product.salePrice || product.price,
+          quantity: 1,
+        },
+      ],
+    },
+    req,
+    res,
   });
 
   return {

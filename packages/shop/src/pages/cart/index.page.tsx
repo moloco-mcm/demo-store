@@ -20,9 +20,15 @@ import useCart, {
   useDeleteCartItemMutation,
   useUpdateCartItemMutation,
 } from '../../hooks/use-cart';
+import {
+  sessionResolver,
+  extractDeviceInfoFromRequest,
+} from '../../common/api-utils';
+import { browserIdResolver } from '../../common/api-utils/browserId';
+import { track } from '../../common/user-event-tracker';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { req } = context;
+  const { req, res } = context;
   const { session: sessionCookie } = req.cookies;
 
   if (!sessionCookie) {
@@ -33,6 +39,15 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       },
     };
   }
+
+  track({
+    event: {
+      eventType: 'PAGE_VIEW',
+      pageId: 'CART',
+    },
+    req,
+    res,
+  });
 
   return {
     props: {},

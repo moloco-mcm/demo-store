@@ -1,7 +1,6 @@
 import type { NextApiHandler } from 'next';
-import { nanoid } from 'nanoid';
 
-import { insertEvent } from '../../../../common/user-api-client';
+import { track } from '../../../../common/user-event-tracker';
 import {
   extractDeviceInfoFromRequest,
   sessionResolver,
@@ -145,22 +144,21 @@ export const postHandler: NextApiHandler<AddCartItemApiResponse> = async (
   );
 
   newlyAddedProduct &&
-    insertEvent({
-      id: nanoid(),
-      eventType: 'ADD_TO_CART',
-      timestamp: Date.now(),
-      channelType: 'SITE',
-      userId: session.user.id,
-      device: extractDeviceInfoFromRequest(req),
-      items: [
-        {
-          id: body.item.productId,
-          price:
-            newlyAddedProduct.product.salePrice ||
-            newlyAddedProduct.product.price,
-          quantity: body.item.quantity,
-        },
-      ],
+    track({
+      event: {
+        eventType: 'ADD_TO_CART',
+        items: [
+          {
+            id: body.item.productId,
+            price:
+              newlyAddedProduct.product.salePrice ||
+              newlyAddedProduct.product.price,
+            quantity: body.item.quantity,
+          },
+        ],
+      },
+      req,
+      res,
     });
 
   return res.status(200).json({ items });
